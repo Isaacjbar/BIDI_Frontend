@@ -1,0 +1,195 @@
+/* Global Styles */
+body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Para que todo el contenido, incluido el footer, ocupe al menos la pantalla completa */
+    overflow: hidden;
+}
+
+/*TODO SOBRE EL NAV*/
+
+/* Estilos del icono del libro circular */
+.book-icon {
+    width: 40px; /* Ajusta el tamaño del icono */
+    height: 40px;
+    fill: white; /* Color del icono */
+}
+
+/* Contenedor del logo y el texto "BIDI" */
+.logo-container {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease; /* Transición suave para el hover */
+}
+
+.logo-container:hover {
+    transform: scale(1.1); /* Agranda ligeramente el logo y el texto al pasar el mouse */
+}
+
+/* Estilos del texto "BIDI" */
+.logo-text {
+    font-size: 1.5rem; /* Tamaño del texto */
+    font-weight: 700;
+    color: white;
+    margin-left: 10px; /* Espacio entre el logo y el texto */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #001f4d; /* Fondo azul oscuro */
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, links a la derecha */
+    align-items: center;
+}
+
+/* Contenedor de los enlaces y el icono de perfil */
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Main Content */
+main {
+    flex-grow: 1; /* Permite que el contenido crezca ocupando el espacio disponible */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    padding: 2rem;
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) -50%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    position: relative; /* Para contener las waves dentro del main */
+    overflow: hidden; /* Evitar que los elementos hijos se desborden fuera del main */
+}
+
+
+/*FONDO DINAMICO*/
+
+/* Círculos simulando oleaje */
+.wave-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Ajusta la altura al 100% del main */
+    pointer-events: none; /* Evita la interacción con las olas */
+}
+
+.wave {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #056dbb;
+    box-shadow: 2px 16px 16px #00d4ff;
+    filter: blur(25px);
+}
+
+.wave.left {
+    left: -150px; /* Mueve ligeramente a la izquierda */
+    top: -100px; /* Asegura que empiece dentro del main */
+    animation: moveWaveVertical 2.5s infinite ease-in-out alternate;
+}
+
+.wave.right {
+    right: -150px; /* Mueve ligeramente a la derecha */
+    top: -100px; /* Asegura que empiece dentro del main */
+    animation: moveWaveVertical 2.5s infinite ease-in-out alternate;
+}
+
+/* Animación de movimiento vertical */
+@keyframes moveWaveVertical {
+    0% {
+        transform: translateY(0vh); /* Ajusta para que la animación inicie dentro del main */
+    }
+    100% {
+        transform: translateY(65vh); /* Ajusta para que termine dentro del main */
+    }
+}
+
+/* Estilos del contenedor del formulario */
+.login-container {
+    text-align: center !important;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #001f4d;
+}
+
+.login-form .input-group {
+    margin-bottom: 2rem;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.login-form input {
+    width: 80%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Botón con efecto de hover y box-shadow brilloso */
+.btn-login {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #001f4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #004080;
+    transform: scale(1.01); /* Agranda el botón al pasar el ratón */
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.7), 0 0 40px rgba(0, 212, 255, 0.7); /* Brillo en el hover */
+}
+
+.links-container {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.links-container .link {
+    margin: 0 1rem;
+    color: #004080;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.links-container .link:hover {
+    transform: scale(1.08); /* Agranda el link al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #00264d; /* Fondo azul marino oscuro */
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+    margin-top: auto; /* Coloca el footer al final */
+}
