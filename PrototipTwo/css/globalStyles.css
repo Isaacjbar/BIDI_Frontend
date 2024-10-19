@@ -15,8 +15,26 @@ body {
 .book-icon {
     width: 40px; /* Ajusta el tamaño del icono */
     height: 40px;
-    margin-right: 10px; /* Espacio entre el icono y el texto */
     fill: white; /* Color del icono */
+}
+
+/* Contenedor del logo y el texto "BIDI" */
+.logo-container {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease; /* Transición suave para el hover */
+}
+
+.logo-container:hover {
+    transform: scale(1.1); /* Agranda ligeramente el logo y el texto al pasar el mouse */
+}
+
+/* Estilos del texto "BIDI" */
+.logo-text {
+    font-size: 1.5rem; /* Tamaño del texto */
+    font-weight: 700;
+    color: white;
+    margin-left: 10px; /* Espacio entre el logo y el texto */
 }
 
 /* Estilos del icono de perfil */
@@ -45,26 +63,21 @@ body {
     color: white;
     padding: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Logo a la izquierda, links a la derecha */
     align-items: center;
 }
 
-.navbar .logo {
+/* Contenedor de los enlaces y el icono de perfil */
+.nav-container {
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    transition: transform 0.3s ease;
 }
 
-.navbar .logo:hover {
-    transform: scale(1.2); /* Agranda el logo al pasar el mouse */
-}
-
+/* Estilos de los enlaces */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem; /* Espacio entre los enlaces */
 }
 
 .nav-links li {
