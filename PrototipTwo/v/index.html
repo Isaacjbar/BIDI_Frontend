@@ -8,18 +8,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">BIDI</div>
-            <ul class="nav-links">
-                <li><a href="#">Usuarios</a></li>
-                <li><a href="#">Categorías</a></li>
-                <li><a href="#">Libros</a></li>
-                <li><a href="#">Préstamos</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- Navbar -->
+<!-- Navbar -->
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <!-- Ícono de libro circular -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
+                <g fill="none" stroke="#fff" stroke-width="2">
+                    <!-- Parte izquierda de la portada con bordes redondeados -->
+                    <rect x="4" y="4" width="28" height="56" rx="10" ry="10" fill="#fff" />
+                    <!-- Parte derecha de la portada con bordes redondeados -->
+                    <rect x="32" y="4" width="28" height="56" rx="10" ry="10" fill="none" stroke="#fff" stroke-width="2" />
+                    <!-- Páginas dentro del libro con líneas -->
+                    <line x1="18" y1="14" x2="46" y2="14" stroke="#fff" />
+                    <line x1="18" y1="24" x2="46" y2="24" stroke="#fff" />
+                    <line x1="18" y1="34" x2="46" y2="34" stroke="#fff" />
+                    <line x1="18" y1="44" x2="46" y2="44" stroke="#fff" />
+                    <line x1="18" y1="54" x2="46" y2="54" stroke="#fff" />
+                </g>
+            </svg>
+            BIDI
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Usuarios</a></li>
+            <li><a href="#">Categorías</a></li>
+            <li><a href="#">Libros</a></li>
+            <li><a href="#">Préstamos</a></li>
+        </ul>
+
+        <!-- Ícono de perfil con líneas más gruesas -->
+        <div class="profile-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="white" stroke-width="4">
+                <!-- Cabeza -->
+                <circle cx="32" cy="22" r="10"/>
+                <!-- Cuerpo -->
+                <path d="M16 44c0-8 6-12 16-12s16 4 16 12v6H16z"/>
+            </svg>
+        </div>
+    </nav>
+</header>
+
+
+
     
     <!-- Contenido Principal -->
     <main>
