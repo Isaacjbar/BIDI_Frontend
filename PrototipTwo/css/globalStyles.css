@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     min-height: 100vh; /* Para que todo el contenido, incluido el footer, ocupe al menos la pantalla completa */
     overflow: hidden;
+    overflow-y: auto;
 }
 
 /*TODO SOBRE EL NAV*/
@@ -105,6 +106,7 @@ main {
     text-align: center;
     position: relative; /* Para contener las waves dentro del main */
     overflow: hidden; /* Evitar que los elementos hijos se desborden fuera del main */
+    overflow-y: auto;
 }
 
 
@@ -164,6 +166,7 @@ main {
     gap: 20px;
     z-index: 1000;
     text-align: center;
+    padding-bottom: 2em;
 }
 
 .card {
@@ -205,7 +208,7 @@ main {
     color: white;
     text-align: center;
     padding: .05rem;
-    position: relative;
+    position: relative !important;
     width: 100%;
     margin-top: auto;
 }
