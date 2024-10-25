@@ -14,12 +14,11 @@ body {
 main {
     flex-grow: 1;
     padding: 2rem;
-    background: rgb(2, 0, 36);
-    background: radial-gradient(circle, rgba(2, 0, 36, 1) -50%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
     text-align: center;
     position: relative;
     overflow: hidden;
     overflow-y: auto;
+    background: transparent;
 }
 
 /* Fondo y animación */
@@ -31,6 +30,8 @@ main {
     height: 100vh;
     z-index: -2; /* Fondo detrás de las olas */
     overflow: hidden;
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) -50%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
 .wave-container {
@@ -73,7 +74,7 @@ main {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(40vh);
+        transform: translateY(80vh);
     }
 }
 
@@ -100,8 +101,8 @@ main {
 }
 
 .card {
-    width: 322px;
-    height: 300px;
+    width: 20%;
+    height: 250px;
     border-radius: 50px;
     background: #e0e0e0;
     box-shadow: -1px -1px 3px #ffffff;
