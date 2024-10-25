@@ -1,13 +1,130 @@
-/* Global Styles */
+/* Estilos globales */
 body {
     font-family: 'Outfit', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Para que todo el contenido, incluido el footer, ocupe al menos la pantalla completa */
+    min-height: 100vh;
     overflow: hidden;
     overflow-y: auto;
+}
+
+/* Main Content */
+main {
+    flex-grow: 1;
+    padding: 2rem;
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) -50%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* Fondo y animación */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2; /* Fondo detrás de las olas */
+    overflow: hidden;
+}
+
+.wave-container {
+    position: fixed; /* Olas fijas sobre el fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Evita interacción */
+    z-index: 1; /* Coloca las olas encima del fondo pero detrás del contenido principal */
+}
+
+/* Estilos de las olas */
+.wave {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #056dbb;
+    box-shadow: 2px 16px 16px #00d4ff;
+    filter: blur(25px);
+    opacity: 0.7;
+}
+
+.wave.left {
+    left: -150px;
+    top: -100px;
+    animation: moveWaveVertical 2.5s infinite ease-in-out alternate;
+}
+
+.wave.right {
+    right: -150px;
+    top: -100px;
+    animation: moveWaveVertical 2.5s infinite ease-in-out alternate;
+}
+
+/* Animación de movimiento vertical */
+@keyframes moveWaveVertical {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(40vh);
+    }
+}
+
+/* Estilos de main transparente */
+.main-content {
+    background-color: transparent;
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Estilos de las cards para asegurar que estén en la capa superior */
+.card-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 2%;
+    flex-wrap: wrap;
+    gap: 20px;
+    z-index: 2; /* Cards por encima de las olas */
+    text-align: center;
+    padding-bottom: 2em;
+}
+
+.card {
+    width: 322px;
+    height: 300px;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: -1px -1px 3px #ffffff;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 5px;
+    text-align: left;
 }
 
 /*TODO SOBRE EL NAV*/
@@ -96,111 +213,6 @@ body {
     font-weight: 600;
 }
 
-
-/* Main Content */
-main {
-    flex-grow: 1; /* Se expande para llenar el espacio disponible */
-    padding: 2rem;
-    background: rgb(2,0,36);
-    background: radial-gradient(circle, rgba(2,0,36,1) -50%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-    text-align: center;
-    position: relative; /* Para contener las waves dentro del main */
-    overflow: hidden; /* Evitar que los elementos hijos se desborden fuera del main */
-    overflow-y: auto;
-}
-
-
-/*FONDO DINAMICO*/
-
-/* Círculos simulando oleaje */
-.wave-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; /* Ajusta la altura al 100% del main */
-    pointer-events: none; /* Evita la interacción con las olas */
-}
-
-.wave {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: #056dbb;
-    box-shadow: 2px 16px 16px #00d4ff;
-    filter: blur(25px);
-}
-
-.wave.left {
-    left: -150px; /* Mueve ligeramente a la izquierda */
-    top: -100px; /* Asegura que empiece dentro del main */
-    animation: moveWaveVertical 2.5s infinite ease-in-out alternate;
-}
-
-.wave.right {
-    right: -150px; /* Mueve ligeramente a la derecha */
-    top: -100px; /* Asegura que empiece dentro del main */
-    animation: moveWaveVertical 2.5s infinite ease-in-out alternate;
-}
-
-/* Animación de movimiento vertical */
-@keyframes moveWaveVertical {
-    0% {
-        transform: translateY(0vh); /* Ajusta para que la animación inicie dentro del main */
-    }
-    100% {
-        transform: translateY(65vh); /* Ajusta para que termine dentro del main */
-    }
-}
-
-
-/*CARDS*/
-.card-container {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    padding-top: 2%;
-    flex-wrap: wrap;
-    gap: 20px;
-    z-index: 1000;
-    text-align: center;
-    padding-bottom: 2em;
-}
-
-.card {
-    /*background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
-                0 0 10px rgba(0, 212, 255, 0.3), /* Sombra brillante más suave 
-                0 0 20px rgba(0, 212, 255, 0.2); /* Efecto resplandor menos intenso */
-    width: 322px;
-    height: 300px;
-    border-radius: 50px;
-    background: #e0e0e0;
-    box-shadow: -1px -1px 3px #ffffff;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card-title {
-    font-size: 2em;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.card-description {
-    font-size: 1.5em;
-    color: #555;
-    margin-bottom: 5px;
-    text-align: left;
-}
 
 /* Footer Styles */
 .footer {
