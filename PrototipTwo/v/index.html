@@ -63,6 +63,24 @@
     
     <!-- Contenido Principal -->
     <main class="content">
+        <div class="section-header">
+            <h1 class="section-title">Gestión de Usuarios</h1>
+            <div class="section-actions">
+                <div class="register-group">
+                    <button class="create-button">
+                        Registrar
+                    </button>
+                </div>
+                <div class="filter-group">
+                    <span class="status-text" id="statusText">Estado inactivo</span>
+                    <label class="switch">
+                        <input type="checkbox" id="statusSwitch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>              
+                         
         <div class="card-container">
             <div class="card">
                 <h2 class="card-title">Título</h2>
@@ -136,5 +154,6 @@
     <footer class="footer">
         <p>&copy; 2024 BIDI. Todos los derechos reservados.</p>
     </footer>
+    <script src="../js/script.js"></script> <!-- Asegúrate de que la ruta sea correcta -->
 </body>
 </html>

@@ -87,6 +87,119 @@ main {
     text-align: center;
 }
 
+/* Contenedor del encabezado de la sección */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Fondo y efecto hover para el botón "Registrar" */
+.register-group, .filter-group {
+    background-color: #001f4d; /* Mismo color que el botón */
+    padding: 5px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.register-group:hover, .filter-group:hover {
+    transform: scale(1.05); /* Agrandamiento en hover */
+}
+
+/* Contenedor de las acciones */
+.section-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Estilo del título */
+.section-title {
+    font-size: 1.8em;
+    font-weight: 200;
+    color: #fff;
+    background-color: #001f4d;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.section-title:hover {
+    transform: scale(1.05);
+}
+
+/* Botón minimalista */
+.create-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.2em;
+    font-weight: 200;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Texto de estado */
+.status-text {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 200;
+    margin-right: 10px;
+}
+
+/* Estilos para el switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 25px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #056dbb;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+
 /* Estilos de las cards para asegurar que estén en la capa superior */
 .card-container {
     display: flex;
