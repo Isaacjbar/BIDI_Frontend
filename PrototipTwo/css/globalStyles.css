@@ -87,6 +87,7 @@ main {
     text-align: center;
 }
 
+
 /* Contenedor del encabezado de la sección */
 .section-header {
     display: flex;
@@ -340,4 +341,19 @@ input:checked + .slider:before {
     position: relative !important;
     width: 100%;
     margin-top: auto;
+}
+.modify-button {
+    background-color: #001f4d;
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 1.2em;
+    font-weight: 200;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.modify-button:hover {
+    transform: scale(1.05);
 }
