@@ -90,6 +90,13 @@ main {
 
 /* Contenedor del encabezado de la sección */
 .section-header {
+    position: fixed;
+    top:84px;
+    width: 90%;
+    z-index: 10; /* Para que esté encima de otros elementos */
+    background-color: rgba(0, 31, 77, 0.9); /* Fondo semi-transparente */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
+
     display: flex;
     justify-content: space-between;
     align-items: center;
