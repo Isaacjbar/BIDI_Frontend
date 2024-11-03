@@ -6,6 +6,7 @@
     <title>Página Básica</title>
     <link rel="stylesheet" href="../css/globalStyles.css"> <!-- Enlace al archivo de estilos -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Iconos-->
 </head>
 <body>
     <!-- Fondo de animación -->
@@ -18,7 +19,7 @@
       <!-- Barra lateral -->
       <aside class="sidebar">
         <!-- Icono para Registrar -->
-        <div class="icon" title="Registrar">
+        <div class="icon" title="Registrar" onclick="openModal()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
             </svg>
@@ -85,7 +86,7 @@
         <div class="section-header">
             <h1 class="section-title">Gestión de Usuarios</h1>
         </div>
-        
+
         <div class="section-actions">
             <div class="register-group">
                 <button class="create-button" onclick="openModal()">Registrar</button>
@@ -102,43 +103,132 @@
             </div>
         </div>
 
-        <!-- Modal -->
-<div id="registerModal" class="modal">
+    <!-- Modal -->
+    <div id="registerModal" class="modal">
     <div class="modal-container">
         <div class="modal-header">
             <h2 class="modal-title">Registro</h2>
-            <button class="close-button" onclick="closeModal()">&times;</button>
+            <button class="close-button" onclick="closeModal('registerModal')">&times;</button>
         </div>
         <form>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="nombre">Dato 1: <span class="required">*</span></label>
-                    <input type="text" id="Dato1" name="Dato1" required>
+                    <label for="nombre">Nombres: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="Nombres" name="Nombres">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="email">Dato 2: <span class="required">*</span></label>
-                    <input type="text" id="Dato2" name="Dato2" required>
+                    <label for="apellidos">Apellidos: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="Apellidos" name="Apellidos">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="password">Dato 3: <span class="required">*</span></label>
-                    <input type="text" id="Dato3" name="Dato3" required>
+                    <label for="email">Correo electrónico: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" id="email" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono: <span class="required">*</label>
+                    <div class="input-icon">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña: <span class="required">*</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirmar contraseña: <span class="required">*</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirm-password" name="confirm-password">
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-cancel" onclick="closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-cancel" onclick="closeModal('registerModal')">Cancelar</button>
                 <button type="submit" class="btn btn-submit">Registrar</button>
             </div>
         </form>
     </div>
 </div>
-
+<!-- Modal de Edición -->
+<div id="editModal" class="modal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 class="modal-title">Editar Tarjeta</h2>
+            <button class="close-button" onclick="closeModal('editModal')">&times;</button>
+        </div>
+        <form id="editForm">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editCardName">Nombres:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="editNombres" name="Nombres" value="Nombres">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editCardLastName">Apellidos:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="editApellidos" name="Apellidos" value="Apellidos">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editCardEmail">Correo electrónico:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" id="editEmail" name="email" value="correo@gmail.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editCardPhone">Teléfono:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="editTelefono" name="telefono" value="7771234567">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editCardPassword">Contraseña:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="editPassword" name="password" value="123">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editCardRepeatPassword">Confirmar contraseña:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="editConfirmPassword" name="confirm-password" value="123">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" onclick="closeModal('editModal')">Cancelar</button>
+                <button type="submit" class="btn btn-submit">Guardar        </button>
+            </div>
+        </form>
+    </div>
+</div>
         <div class="card-container">
             <!-- Tarjetas con los detalles de usuarios -->
             <div class="card">
                 <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
             <div class="card">
                 <h2 class="card-title">Título</h2>
@@ -206,5 +296,7 @@
         <p>&copy; 2024 BIDI. Todos los derechos reservados.</p>
     </footer>
     <script src="../js/script.js"></script> <!-- Asegúrate de que la ruta sea correcta -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/Alertas.js"></script>
 </body>
 </html>

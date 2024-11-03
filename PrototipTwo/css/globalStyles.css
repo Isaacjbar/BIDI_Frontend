@@ -299,14 +299,14 @@ input:checked + .slider:before {
     position: relative;
     padding-top: 2%;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 22px;
     z-index: 2; /* Cards por encima de las olas */
     text-align: center;
-    padding-bottom: 2em;
+    padding-bottom: 3em;
 }
 
 .card {
-    width: 20%;
+    width: 21%;
     height: 250px;
     border-radius: 50px;
     background: #e0e0e0;
@@ -321,16 +321,17 @@ input:checked + .slider:before {
 }
 
 .card-title {
-    font-size: 2em;
-    font-weight: 600;
+    font-size: 1.7em;
+    font-weight: 600;   
     margin-bottom: 10px;
 }
 
 .card-description {
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #555;
     margin-bottom: 5px;
     text-align: left;
+    
 }
 
 /* Sombra para la tarjeta seleccionada */
@@ -375,7 +376,7 @@ input:checked + .slider:before {
 }
 
 .modal-container {
-    margin: 10% auto; /* Centra el modal en la pantalla */
+    margin: 2% auto; /* Centra el modal en la pantalla */
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -410,7 +411,7 @@ input:checked + .slider:before {
     padding: 20px;
 }
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 .form-group label {
     display: block;
@@ -425,8 +426,9 @@ input:checked + .slider:before {
     box-sizing: border-box;
 }
 .modal-footer {
-    padding: 20px;
+    padding: 10px;
     text-align: right;
+
 }
 .btn {
     padding: 10px 20px;
@@ -437,10 +439,39 @@ input:checked + .slider:before {
     margin-left: 10px;
     background-color: #ccc;
     color: #333;
+    margin-top: 0;
 }
+
 .required {
     color: red;
     margin-left: 3px;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.input-icon input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    padding-left: 2rem;    /* Espacio para el icono */
 }
 
 /* Barra lateral flotante */
