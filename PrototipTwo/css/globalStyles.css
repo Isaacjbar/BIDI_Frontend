@@ -22,6 +22,8 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
+    cursor: pointer;
+
     transition: transform 0.3s ease; /* Transición suave para el hover */
 }
 
@@ -131,6 +133,11 @@ main {
     background: radial-gradient(circle, rgba(2, 0, 36, 1) -50%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
+.content {
+    padding: 25px;
+    overflow: auto;
+}
+
 .wave-container {
     position: fixed; /* Olas fijas sobre el fondo */
     top: 0;
@@ -181,18 +188,27 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    gap: 20px;
-    margin-left: 1em;
-    margin-right: 1em;
 }
 
 /* Fondo y efecto hover para el botón "Registrar" */
-.register-group, .filter-group {
-    background-color: #001f4d; /* Mismo color que el botón */
-    padding: 5px 10px;
+.register-group{
+    background-color: #001f4d;
+    padding: 5px;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
+    display: inline-flex; /* Permite que los elementos se alineen en una sola fila */
+    align-items: left;
+    margin-right: 10px; /* Espacio entre los elementos */
+    transition: transform 0.2s ease;
+    gap: 10px;
+}
+
+.filter-group {
+    background-color: #001f4d;
+    padding: 5px;
+    border-radius: 8px;
+    display: inline-flex; /* Permite que los elementos se alineen en una sola fila */
+    align-items: left;
+    margin-right: 950px; /* Espacio entre los elementos */
     transition: transform 0.2s ease;
 }
 
@@ -203,9 +219,7 @@ main {
 /* Contenedor de las acciones */
 .section-actions {
     display: flex;
-    margin-left: 1em;
     align-items: center;
-    gap: 15px;
 }
 
 /* Estilo del título */
@@ -321,15 +335,17 @@ input:checked + .slider:before {
 }
 
 .card-title {
+    margin-top:auto ;
     font-size: 1.7em;
     font-weight: 600;   
     margin-bottom: 10px;
 }
 
 .card-description {
+    margin-top: 2px;
     font-size: 1.2em;
     color: #555;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     text-align: left;
     
 }
@@ -510,4 +526,31 @@ input[type="password"] {
     width: 20px;
     height: 20px;
     fill: #ffffff;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    padding-left: 45px;
+    margin-bottom: 10px;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; 
+}
+
+.card[data-status="activo"]  {
+    opacity:1;
+
+}
+
+/* Indicador rojo para cards inactivas */
+.card[data-status="inactivo"]  {
+    opacity: 0.6;
+
+
 }

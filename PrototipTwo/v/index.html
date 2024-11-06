@@ -16,8 +16,8 @@
             <div class="wave right"></div>
         </div>
     </div>
-      <!-- Barra lateral -->
-      <aside class="sidebar">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
         <!-- Icono para Registrar -->
         <div class="icon" title="Registrar" onclick="openModal()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
@@ -43,7 +43,7 @@
     <header>
         <nav class="navbar">
             <!-- Contenedor del logo y texto "BIDI" -->
-            <div class="logo-container">
+            <div class="logo-container" title="Ir al inicio">
                 <div class="logo">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
                         <g fill="none" stroke="#fff" stroke-width="2">
@@ -85,23 +85,15 @@
 
         <div class="section-header">
             <h1 class="section-title">Gestión de Usuarios</h1>
-        </div>
-
-        <div class="section-actions">
-            <div class="register-group">
-                <button class="create-button" onclick="openModal()">Registrar</button>
-            </div>
-            <div class="modify-group">
-                <button class="modify-button">Modificar</button>
-            </div>
             <div class="filter-group">
-                <span class="status-text" id="statusText">Estado inactivo</span>
+                <span class="status-text" id="statusText">Inactivos</span>
                 <label class="switch">
                     <input type="checkbox" id="statusSwitch">
                     <span class="slider"></span>
                 </label>
             </div>
         </div>
+        
 
     <!-- Modal -->
     <div id="registerModal" class="modal">
@@ -221,73 +213,116 @@
         </form>
     </div>
 </div>
-        <div class="card-container">
-            <!-- Tarjetas con los detalles de usuarios -->
-            <div class="card">
-                <h2 class="card-title">Título</h2>
+        <div class="card-container">            <!-- Tarjetas con los detalles de usuarios -->
+
+            <div class="card" data-status="activo">
+                <div class="card-header">
+                    <h2 class="card-title">Título1</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
                 <p class="card-description"><strong>Nombres:</strong> Valor</p>
-                <p class="card-description"><strong>Apellidos</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
                 <p class="card-description"><strong>Teléfono:</strong> Valor</p>
                 <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
+            
+            <div class="card" data-status="activo">
+                <div class="card-header">
+                    <h2 class="card-title">Título2</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
     
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
+            <div class="card" data-status="inactivo">
+                <div class="card-header">
+                    <h2 class="card-title">Título3</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
     
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
+            <div class="card" data-status="activo">
+                <div class="card-header">
+                    <h2 class="card-title">Título4</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
-            </div>
-    
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
-            </div>
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
+
+            <div class="card" data-status="activo">
+                <div class="card-header">
+                    <h2 class="card-title">Título5</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
     
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
+            <div class="card" data-status="inactivo">
+                <div class="card-header">
+                    <h2 class="card-title">Título6</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
+
+            <div class="card" data-status="activo">
+                <div class="card-header">
+                    <h2 class="card-title">Título7</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
-    
-            <div class="card">
-                <h2 class="card-title">Título</h2>
-                <p class="card-description">Dato1: Valor</p>
-                <p class="card-description">Dato2: Valor</p>
-                <p class="card-description">Dato3: Valor</p>
+
+            <div class="card" data-status="inactivo">
+                <div class="card-header">
+                    <h2 class="card-title">Título8</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
+            </div>
+
+            <div class="card" data-status="activo">
+                <div class="card-header">
+                    <h2 class="card-title">Título9</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
+            </div>
+
+            <div class="card" data-status="inactivo">
+                <div class="card-header">
+                    <h2 class="card-title">Título10</h2>
+                    <span class="status-indicator"></span> <!-- Indicador de estado alineado a la derecha -->
+                </div>
+                <p class="card-description"><strong>Nombres:</strong> Valor</p>
+                <p class="card-description"><strong>Apellidos:</strong> Valor</p>
+                <p class="card-description"><strong>Teléfono:</strong> Valor</p>
+                <p class="card-description"><strong>Correo:</strong> Valor</p>
             </div>
     </main>
 

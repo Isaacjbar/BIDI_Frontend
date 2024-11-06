@@ -1,11 +1,28 @@
+// Cambia el texto y filtra las cards según el estado (activo o inactivo)
 document.getElementById("statusSwitch").addEventListener("change", function () {
     const statusText = document.getElementById("statusText");
-    statusText.textContent = this.checked ? "Estado activo" : "Estado inactivo";
+    const showActive = this.checked;
+    statusText.textContent = showActive ? "Activos" : "Inactivos";
+
+    // Filtra las cards según el estado del switch
+    filterCards(showActive ? "activo" : "inactivo");
 });
 
-// JS para la iluminación de las cards
-const cards = document.querySelectorAll('.card');
+// Función para filtrar las cards
+function filterCards(status) {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        // Mostrar u ocultar cards según el estado seleccionado
+        if (card.getAttribute('data-status') === status) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
 
+// Selección y resaltado de cards
+const cards = document.querySelectorAll('.card');
 let selectedCard = null;
 let clickCount = 0;
 
@@ -75,6 +92,3 @@ window.onclick = function(event) {
     }
     removeHighlightFromAllCards(); // Quitar el brillo de las cards al hacer clic fuera de las cards
 }
-
-
-
