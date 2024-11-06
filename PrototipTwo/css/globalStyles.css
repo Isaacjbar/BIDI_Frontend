@@ -208,7 +208,7 @@ main {
     border-radius: 8px;
     display: inline-flex; /* Permite que los elementos se alineen en una sola fila */
     align-items: left;
-    margin-right: 950px; /* Espacio entre los elementos */
+    margin-right: 900px; /* Espacio entre los elementos */
     transition: transform 0.2s ease;
 }
 
