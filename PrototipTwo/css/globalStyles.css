@@ -563,7 +563,6 @@ input[type="password"] {
 }
 
 
-<<<<<<< HEAD
 .status-indicator {
     display: inline-block;
     width: 30px;
@@ -582,6 +581,23 @@ input[type="password"] {
 
 }
 
+/* Estilos del botón de activación/desactivación */
+.toggle-button {
+    position: absolute;
+    top: 200px;
+    right: 27px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-=======
->>>>>>> 3c76ab3f6858e0491a9bfcbdd775d2aaf30dd9b1
+
+/* Aseguramos que las tarjetas tengan `position: relative` para posicionar el botón */
+.card {
+    position: relative;
+}
+

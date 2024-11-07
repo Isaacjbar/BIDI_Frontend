@@ -54,4 +54,29 @@ window.onclick = function(event) {
         closeModal(event.target.id);
     }
 }
+// Añadir botón de activación/desactivación a cada tarjeta
+document.querySelectorAll('.card').forEach((card) => {
+    const button = document.createElement('button');
+    button.className = 'toggle-button';
+    button.textContent = card.dataset.status === 'activo' ? 'Desactivar' : 'Activar';
+    button.style.backgroundColor = card.dataset.status === 'activo' ? 'red' : 'green';
+    button.title = card.dataset.status === 'activo' ? 'Desactivar esta tarjeta' : 'Activar esta tarjeta';
+
+
+    // Alternar el estado de activación al hacer clic
+    button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isActive = card.getAttribute('data-status') === 'activo';
+
+
+        // Cambiar el estado de la tarjeta y el color del botón
+        card.setAttribute('data-status', isActive ? 'inactivo' : 'activo');
+        button.style.backgroundColor = isActive ? 'green' : 'red';
+        button.textContent = isActive ? 'Activar' : 'Desactivar';
+    });
+
+
+    // Insertar el botón en el encabezado de cada tarjeta
+    card.querySelector('.card-header').appendChild(button);
+});
 
