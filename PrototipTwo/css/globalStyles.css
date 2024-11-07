@@ -320,8 +320,7 @@ input:checked + .slider:before {
 }
 
 .card {
-    width: 21%;
-    height: 250px;
+    width: 230px; 
     border-radius: 50px;
     background: #e0e0e0;
     box-shadow: -1px -1px 3px #ffffff;
@@ -330,24 +329,59 @@ input:checked + .slider:before {
     transition: transform 0.3s;
 }
 
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .card:hover {
     transform: scale(1.05);
 }
 
+.icono {
+    background:linear-gradient(to bottom, #056dbb, #001f4d);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px; /* Reducido de 15px a 10px */
+    margin-left: 5px;
+}
+
+.icono svg {
+    width: 40px;
+    height: 40px;
+    fill: #c2bfbf;
+}
+
 .card-title {
-    margin-top:auto ;
-    font-size: 1.7em;
-    font-weight: 600;   
-    margin-bottom: 10px;
+    font-size: 1.3em; /* Reducido de 24px a 20px */
+    font-weight: 600;
+    text-align: center; 
+    width: 130px;
 }
 
 .card-description {
-    margin-top: 2px;
-    font-size: 1.2em;
     color: #555;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     text-align: left;
-    
+}
+
+.label {
+    color: rgb(87, 86, 86);
+    margin-right: 5px;
+}
+
+.card[data-status="activo"]  {
+    opacity:1;
+}
+
+/* Indicador rojo para cards inactivas */
+.card[data-status="inactivo"]  {
+    opacity: 0.6;
 }
 
 /* Sombra para la tarjeta seleccionada */
@@ -528,29 +562,4 @@ input[type="password"] {
     fill: #ffffff;
 }
 
-.card-header {
-    display: flex;
-    align-items: center;
-    justify-content:space-around;
-    padding-left: 45px;
-    margin-bottom: 10px;
-}
 
-.status-indicator {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%; 
-}
-
-.card[data-status="activo"]  {
-    opacity:1;
-
-}
-
-/* Indicador rojo para cards inactivas */
-.card[data-status="inactivo"]  {
-    opacity: 0.6;
-
-
-}
