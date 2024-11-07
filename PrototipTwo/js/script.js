@@ -92,3 +92,4 @@ window.onclick = function(event) {
     }
     removeHighlightFromAllCards(); // Quitar el brillo de las cards al hacer clic fuera de las cards
 }
+
