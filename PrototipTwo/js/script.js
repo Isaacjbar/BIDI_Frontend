@@ -19,7 +19,10 @@ function filterCards(status) {
             card.style.display = "none";
         }
     });
+ 
 }
+
+
 
 // Función para abrir el modal de registro
 function openModal() {
@@ -77,4 +80,57 @@ document.querySelectorAll('.card').forEach((card) => {
     });
 
 });
+
+// Función para agregar una nueva tarjeta con los datos del formulario
+function addCard(event) {
+    // Prevenir que el formulario recargue la página
+    event.preventDefault();
+
+    // Obtener los datos del formulario
+    const nombres = document.getElementById('Nombres').value;
+    const apellidos = document.getElementById('Apellidos').value;
+    const email = document.getElementById('email').value;
+    const telefono = document.getElementById('telefono').value;
+
+    // Crear la estructura de la tarjeta
+    const cardContainer = document.querySelector('.card-container');
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.setAttribute('data-status', 'activo');
+
+    card.innerHTML = `
+        <div class="card-header">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <span class="status-indicator"></span>
+            </div>
+            <div class="card-title">${nombres}</div>
+        </div>
+        <div class="card-description">
+            <span class="card-data"><strong>Apellidos:</strong></span><br>
+            <span>${apellidos}</span>
+        </div>
+        <div class="card-description">
+            <span class="card-data"><strong>Teléfono:</strong></span><br>
+            <span>${telefono}</span>
+        </div>
+        <div class="card-description">
+            <span class="card-data"><strong>Correo:</strong></span><br>
+            <span>${email}</span>
+        </div>
+    </div>
+    `;
+
+    // Agregar la tarjeta al contenedor
+    cardContainer.appendChild(card);
+
+    // Cerrar el modal y limpiar el formulario
+    closeModal('registerModal');
+    document.getElementById('registerModal').querySelector('form').reset();
+}
+
+// Agregar el evento de "submit" al formulario de registro para que llame a addCard
+document.querySelector('.btn-submit').addEventListener('click', addCard);
 
