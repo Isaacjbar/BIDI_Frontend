@@ -1,4 +1,11 @@
 /* Estilos globales */
+:root{
+    --main-bg-color: rgb(2, 0, 36);
+    --sec-bg-color: rgba(9, 9, 121, 1);
+    --third-bg-color: rgba(0, 212, 255, 1);
+    --nav-bg-color: #001f4d;
+    --footer-bg-color: #00264d;
+}
 body {
     font-family: 'Outfit', sans-serif;
     margin: 0;
@@ -9,7 +16,7 @@ body {
     overflow: hidden;
     overflow-y: auto;
 }
-/*TODO SOBRE EL NAV*/
+/*TODO SOBRE EL NAV*/ 
 
 /* Estilos del icono del libro circular */
 .book-icon {
@@ -96,6 +103,7 @@ body {
     text-decoration: none;
     font-weight: 600;
 }
+
 /* Footer Styles */
 .footer {
     background-color: #00264d; /* Fondo azul marino oscuro */
@@ -305,7 +313,6 @@ input:checked + .slider:before {
     transform: translateX(24px);
 }
 
-
 /* Estilos de las cards para asegurar que estén en la capa superior */
 .card-container {
     display: flex;
@@ -340,7 +347,7 @@ input:checked + .slider:before {
     margin-bottom: 20px;
 }
 
-.icono {
+.card-icon {
     background:linear-gradient(to bottom, #056dbb, #001f4d);
     width: 55px;
     height: 55px;
@@ -353,7 +360,7 @@ input:checked + .slider:before {
     position: relative;
 }
 
-.icono svg {
+.card-icon svg {
     width: 40px;
     height: 40px;
     fill: #c2bfbf;
@@ -387,7 +394,7 @@ input:checked + .slider:before {
     text-align: left;
 }
 
-.label {
+.card-data {
     color: rgb(87, 86, 86);
     margin-right: 5px;
 }
@@ -401,27 +408,10 @@ input:checked + .slider:before {
 }
 
 
-
 /* Sombra para la tarjeta seleccionada */
 .highlight {
     box-shadow: 0 0 15px 5px rgba(0, 150, 255, 0.7); 
     transition: box-shadow 0.2s ease;
-}
-
-.modify-button {
-    background-color: #001f4d;
-    color: #fff;
-    padding: 5px 12px;
-    font-size: 1.2em;
-    font-weight: 200;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.modify-button:hover {
-    transform: scale(1.05);
 }
 
 /* Estilos para el modal */
@@ -440,7 +430,7 @@ input:checked + .slider:before {
 
 .modal.show {
     display: block; /* Muestra el modal */
-    opacity: 1; /* Opacidad total al mostrar */
+    opacity: 1; 
 }
 
 .modal-container {
@@ -498,15 +488,27 @@ input:checked + .slider:before {
     text-align: right;
 
 }
-.btn {
+.btn-submit {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     margin-left: 10px;
-    background-color: #ccc;
-    color: #333;
+    background-color: var(--sec-bg-color);
+    color: rgb(216, 216, 216);
+    margin-top: 0;
+}
+
+.btn-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    background-color: gray;
+    color: rgb(216, 216, 216);
     margin-top: 0;
 }
 
@@ -524,7 +526,7 @@ input:checked + .slider:before {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #888;
+    color: var(--main-bg-color);
 }
 
 .input-icon input {

@@ -54,6 +54,7 @@ window.onclick = function(event) {
         closeModal(event.target.id);
     }
 }
+
 // Añadir botón de activación/desactivación a cada tarjeta
 document.querySelectorAll('.card').forEach((card) => {
     const button = document.createElement('button');
