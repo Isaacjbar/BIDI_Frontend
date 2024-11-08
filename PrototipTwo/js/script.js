@@ -75,8 +75,5 @@ document.querySelectorAll('.card').forEach((card) => {
         button.textContent = isActive ? 'Activar' : 'Desactivar';
     });
 
-
-    // Insertar el botón en el encabezado de cada tarjeta
-    card.querySelector('.card-header').appendChild(button);
 });
 

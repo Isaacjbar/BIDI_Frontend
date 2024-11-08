@@ -327,16 +327,17 @@ input:checked + .slider:before {
     padding: 15px;
     text-align: center;
     transition: transform 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .card-header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.card:hover {
-    transform: scale(1.05);
 }
 
 .icono {
@@ -347,8 +348,9 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 5px; /* Reducido de 15px a 10px */
+    margin-right: 5px;
     margin-left: 5px;
+    position: relative;
 }
 
 .icono svg {
@@ -357,8 +359,23 @@ input:checked + .slider:before {
     fill: #c2bfbf;
 }
 
+.status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    border: 2px solid #e0e0e0;
+}
+
+.card[data-status="inactivo"] .status-indicator {
+    background-color: #F44336;
+}
+  
 .card-title {
-    font-size: 1.3em; /* Reducido de 24px a 20px */
+    font-size: 1.3em; 
     font-weight: 600;
     text-align: center; 
     width: 130px;
@@ -374,15 +391,16 @@ input:checked + .slider:before {
     color: rgb(87, 86, 86);
     margin-right: 5px;
 }
-
+  
 .card[data-status="activo"]  {
     opacity:1;
 }
 
-/* Indicador rojo para cards inactivas */
 .card[data-status="inactivo"]  {
     opacity: 0.6;
 }
+
+
 
 /* Sombra para la tarjeta seleccionada */
 .highlight {
@@ -562,25 +580,6 @@ input[type="password"] {
     fill: #ffffff;
 }
 
-
-.status-indicator {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%; 
-}
-
-.card[data-status="activo"]  {
-    opacity:1;
-
-}
-
-/* Indicador rojo para cards inactivas */
-.card[data-status="inactivo"]  {
-    opacity: 0.6;
-
-}
-
 /* Estilos del botón de activación/desactivación */
 .toggle-button {
     position: absolute;
@@ -596,8 +595,5 @@ input[type="password"] {
 }
 
 
-/* Aseguramos que las tarjetas tengan `position: relative` para posicionar el botón */
-.card {
-    position: relative;
-}
+
 
