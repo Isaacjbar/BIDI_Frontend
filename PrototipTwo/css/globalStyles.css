@@ -320,31 +320,49 @@ input:checked + .slider:before {
     position: relative;
     padding-top: 2%;
     flex-wrap: wrap;
-    gap: 22px;
-    z-index: 2; /* Cards por encima de las olas */
+    gap: 25px;
+    z-index: 3; /* Cards por encima de las olas */
     text-align: center;
     padding-bottom: 3em;
 }
 
 .card {
     width: 230px; 
+    height: 230px;
     border-radius: 50px;
     background: #e0e0e0;
-    box-shadow: -1px -1px 3px #ffffff;
+    box-shadow: -1px -1px 1px rgba(255, 255, 255, 0.5);
     padding: 15px;
     text-align: center;
     transition: transform 0.3s;
+    z-index: 3;
     position: relative;
+    cursor: pointer;
+
+}
+.card:hover,
+.card:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s;
+    border: 2px solid transparent; /* Borde transparente, para no añadir un borde sólido */
+    box-shadow: 0 0 15px rgba(63, 81, 181, 0.3), 0 0 30px rgba(33, 150, 243, 0.4); /* Brillo sutil */
+    outline: none; /* Eliminar el outline por defecto */ 
+}
+.card:active {
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.6), 0 0 40px rgba(63, 81, 181, 0.6); /* Brillo más intenso al hacer clic */
 }
 
-.card:hover {
-    transform: scale(1.05);
+.card:focus-visible{
+    border: 2px solid transparent; /* Borde transparente */
+    box-shadow: 0 0 15px rgba(63, 81, 181, 0.4), 0 0 25px rgba(33, 150, 243, 0.5);  /* Sombra más suave y sutil */
+    outline: none;  /* Eliminar el outline predeterminado */
 }
 
 .card-header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    
 }
 
 .card-icon {
@@ -358,6 +376,7 @@ input:checked + .slider:before {
     margin-right: 5px;
     margin-left: 5px;
     position: relative;
+
 }
 
 .card-icon svg {
@@ -373,14 +392,15 @@ input:checked + .slider:before {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Verde para todos los estados */
     border: 2px solid #e0e0e0;
 }
 
 .card[data-status="inactivo"] .status-indicator {
     background-color: #F44336;
 }
-  
+
+
 .card-title {
     font-size: 1.3em; 
     font-weight: 600;
@@ -395,7 +415,7 @@ input:checked + .slider:before {
 }
 
 .card-data {
-    color: rgb(87, 86, 86);
+    color: rgba(87, 86, 86, 0.751);
     margin-right: 5px;
 }
   
@@ -405,6 +425,7 @@ input:checked + .slider:before {
 
 .card[data-status="inactivo"]  {
     opacity: 0.6;
+    position: relative;
 }
 
 
@@ -585,8 +606,8 @@ input[type="password"] {
 /* Estilos del botón de activación/desactivación */
 .toggle-button {
     position: absolute;
-    top: 200px;
-    right: 27px;
+    bottom: 13px;
+    right: 35px;
     padding: 5px 10px;
     border: none;
     border-radius: 10px;
@@ -594,6 +615,7 @@ input[type="password"] {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    z-index: 5; /* Coloca el botón encima de la opacidad */
 }
 
 

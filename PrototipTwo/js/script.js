@@ -12,17 +12,9 @@ document.getElementById("statusSwitch").addEventListener("change", function () {
 function filterCards(status) {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
-        // Mostrar u ocultar cards según el estado seleccionado
-        if (card.getAttribute('data-status') === status) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
+        card.style.display = card.getAttribute('data-status') === status ? "block" : "none";
     });
- 
 }
-
-
 
 // Función para abrir el modal de registro
 function openModal() {
@@ -58,32 +50,51 @@ window.onclick = function(event) {
     }
 }
 
-// Añadir botón de activación/desactivación a cada tarjeta
+// Añadir botón de activación/desactivación a cada tarjeta existente
 document.querySelectorAll('.card').forEach((card) => {
+    addToggleButton(card);
+    addCardDoubleClickEvent(card); // Añadimos el evento dblclick
+});
+
+// Función para agregar un botón de activación/desactivación a una tarjeta
+function addToggleButton(card) {
     const button = document.createElement('button');
     button.className = 'toggle-button';
     button.textContent = card.dataset.status === 'activo' ? 'Desactivar' : 'Activar';
     button.style.backgroundColor = card.dataset.status === 'activo' ? 'red' : 'green';
-    button.title = card.dataset.status === 'activo' ? 'Desactivar esta tarjeta' : 'Activar esta tarjeta';
-
 
     // Alternar el estado de activación al hacer clic
     button.addEventListener('click', (event) => {
         event.stopPropagation();
         const isActive = card.getAttribute('data-status') === 'activo';
 
-
         // Cambiar el estado de la tarjeta y el color del botón
         card.setAttribute('data-status', isActive ? 'inactivo' : 'activo');
         button.style.backgroundColor = isActive ? 'green' : 'red';
         button.textContent = isActive ? 'Activar' : 'Desactivar';
+
+        // Cambiar el color del .status-indicator basado en el estado
+        const statusIndicator = card.querySelector('.status-indicator');
+        if (card.getAttribute('data-status') === 'activo') {
+            statusIndicator.style.backgroundColor = '#4CAF50';  // Verde para activo
+        } else {
+            statusIndicator.style.backgroundColor = '#F44336';  // Rojo para inactivo
+        }
     });
 
-});
+    // Agregar el botón a la tarjeta
+    card.appendChild(button);
+}
+
+// Función para agregar el evento de doble clic a cada tarjeta
+function addCardDoubleClickEvent(card) {
+    card.addEventListener('dblclick', function() {
+        openEditModal();  // Llama a la función que abre el modal de registro
+    });
+}
 
 // Función para agregar una nueva tarjeta con los datos del formulario
 function addCard(event) {
-    // Prevenir que el formulario recargue la página
     event.preventDefault();
 
     // Obtener los datos del formulario
@@ -97,7 +108,6 @@ function addCard(event) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.setAttribute('data-status', 'activo');
-
     card.innerHTML = `
         <div class="card-header">
             <div class="card-icon">
@@ -120,8 +130,11 @@ function addCard(event) {
             <span class="card-data"><strong>Correo:</strong></span><br>
             <span>${email}</span>
         </div>
-    </div>
     `;
+
+    // Agregar el botón de activación/desactivación a la tarjeta
+    addToggleButton(card);
+    addCardDoubleClickEvent(card); // Añadimos el evento de doble clic para las nuevas tarjetas
 
     // Agregar la tarjeta al contenedor
     cardContainer.appendChild(card);
@@ -133,4 +146,3 @@ function addCard(event) {
 
 // Agregar el evento de "submit" al formulario de registro para que llame a addCard
 document.querySelector('.btn-submit').addEventListener('click', addCard);
-
