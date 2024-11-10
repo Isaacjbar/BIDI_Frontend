@@ -415,7 +415,7 @@ input:checked + .slider:before {
 }
 
 .card-data {
-    color: rgba(87, 86, 86, 0.751);
+    color: rgb(39 38 38 / 75%);
     margin-right: 5px;
 }
   
