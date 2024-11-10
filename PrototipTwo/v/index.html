@@ -26,7 +26,7 @@
         </div>
         
         <!-- Icono para Modificar -->
-        <div class="icon" title="Editar " onclick="openEditModal()">
+        <div class="icon" title="Editar" id="editButton">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
                 <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92-2.92L5 17.34V19h1.66l.92-.92-1.66-1.67zm2.83-2.83l1.66 1.66 7.5-7.5-1.66-1.66-7.5 7.5zM20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.16 1.16 3.75 3.75 1.16-1.16c.39-.39.39-1.02 0-1.41z"/>
             </svg>
@@ -195,20 +195,20 @@
                     <label for="editCardPassword">Contraseña:</label>
                     <div class="input-icon">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="editPassword" name="password" value="123">
+                        <input type="password" id="editPassword" name="password">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="editCardRepeatPassword">Confirmar contraseña:</label>
                     <div class="input-icon">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="editConfirmPassword" name="confirm-password" value="123">
+                        <input type="password" id="editConfirmPassword" name="confirm-password">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-cancel" onclick="closeModal('editModal')">Cancelar</button>
-                <button type="submit" class="btn btn-submit">Guardar</button>
+                <button type="submit" class="btn btn-submit" >Guardar</button>
             </div>
         </form>
     </div>

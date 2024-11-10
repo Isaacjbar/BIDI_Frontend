@@ -340,7 +340,7 @@ input:checked + .slider:before {
     cursor: pointer;
 
 }
-.card:hover,
+
 .card:hover {
     transform: scale(1.03);
     transition: transform 0.3s;
@@ -426,6 +426,40 @@ input:checked + .slider:before {
 .card[data-status="inactivo"]  {
     opacity: 0.6;
     position: relative;
+}
+
+.card-edit-icon {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    right: 22px;
+    cursor: pointer;
+    fill: #8d8f8d; /* Color del icono de lápiz */
+}
+
+/* Cuando el modo de editar está activo */
+.card.edit-mode .card-edit-icon {
+    display: inline; /* Mostrar el icono de lápiz */
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    70% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.edit-mode .card-edit-icon {
+    animation: bounceIn 0.5s ease forwards;
 }
 
 
