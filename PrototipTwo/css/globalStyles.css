@@ -196,31 +196,22 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: nowrap;
 }
 
 /* Fondo y efecto hover para el botón "Registrar" */
-.register-group{
-    background-color: #001f4d;
-    padding: 5px;
-    border-radius: 8px;
-    display: inline-flex; /* Permite que los elementos se alineen en una sola fila */
-    align-items: left;
-    margin-right: 10px; /* Espacio entre los elementos */
-    transition: transform 0.2s ease;
-    gap: 10px;
-}
-
 .filter-group {
     background-color: #001f4d;
     padding: 5px;
     border-radius: 8px;
     display: inline-flex; /* Permite que los elementos se alineen en una sola fila */
-    align-items: left;
-    margin-right: 780px; /* Espacio entre los elementos */
+    align-items: center;
+    margin-right: auto; /* Espacio entre los elementos */
     transition: transform 0.2s ease;
+    gap: 10px;
 }
 
-.register-group:hover, .filter-group:hover {
+.filter-group:hover {
     transform: scale(1.05); /* Agrandamiento en hover */
 }
 
@@ -240,6 +231,7 @@ main {
     border-radius: 20px;
     margin: 0;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
 }
 
 .section-title:hover {
@@ -264,7 +256,6 @@ main {
     color: #fff;
     font-size: 1.2em;
     font-weight: 200;
-    margin-right: 10px;
 }
 
 /* Estilos para el switch */
@@ -273,6 +264,7 @@ main {
     display: inline-block;
     width: 50px;
     height: 25px;
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
 .switch input {
@@ -328,7 +320,7 @@ input:checked + .slider:before {
 
 .card {
     width: 230px; 
-    height: 230px;
+    height: auto;
     border-radius: 50px;
     background: #e0e0e0;
     box-shadow: -1px -1px 1px rgba(255, 255, 255, 0.5);
@@ -615,6 +607,7 @@ input[type="password"] {
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 10;
+    transition: width 0.3s ease, padding 0.3s ease;
 }
 
 /* Estilo de los iconos en la barra lateral */
@@ -651,6 +644,170 @@ input[type="password"] {
     transition: background-color 0.3s ease;
     z-index: 5; /* Coloca el botón encima de la opacidad */
 }
+
+/* RESPONSIVIDAD */
+
+/* Responsividad para pantallas medianas*/
+@media (max-width: 600px){
+    .section-title {
+        font-size: 1.5em;
+        padding: 3px 10px;
+    }
+}
+
+@media (max-width: 600px){
+    .status-text {
+        font-size: 1em;
+    }
+    .switch {
+        width: 40px;
+        height: 20 px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: 36px;
+        padding: 8px;
+    }
+    .sidebar .icon {
+        margin: 6px 0;
+    }
+    .sidebar .icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 200px;
+        padding: 12px;
+    }
+    .card-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .card-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-description {
+        font-size: 0.9em;
+    }
+}
+
+/* Responsividad para pantallas muy pequeñas*/
+@media (max-width: 400px) {
+    .section-title {
+        font-size: 1.2em;
+      
+    }
+}
+
+@media (max-width: 400px){
+    .status-text {
+        font-size: 0.9em;
+    }
+    .switch {
+        width: 35px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 32px;
+        padding: 6px;
+    }
+    .sidebar .icon {
+        margin: 4px 0;
+    }
+
+    .sidebar .icon svg{
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .card {
+        width: 180px;
+        padding: 10px;
+        border-radius: 15px;
+    }
+    .card-icon {
+        width: 35px;
+        height: 35px;
+    }
+    .card-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    .card-title {
+        font-size: 1em;
+    }
+    .card-description {
+        font-size: 0.8em;
+    }
+}
+
+/* Responsividad para pantallas grandes*/
+@media (min-width: 1200px) {
+    .section-title {
+        font-size: 1.9em; /* Tamaño más moderado del título */
+        padding: 6px 15px;
+    }
+    .filter-group .status-text {
+        font-size: 1.3em; /* Tamaño más moderado para el texto "Inactivos" */
+    }
+    .switch {
+        width: 48px; /* Tamaño moderado del switch */
+        height: 24px;
+    }
+    .sidebar {
+        width: 44px; /* Tamaño de barra lateral ligeramente ajustado */
+        padding: 10px;
+    }
+    .sidebar .icon {
+        margin: 8px 0; /* Espacio ajustado entre los iconos */
+    }
+    .sidebar .icon svg {
+        width: 22px; /* Tamaño moderado de los iconos */
+        height: 22px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card {
+        width: 230px;
+        padding: 18px;
+    }
+    .card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .card-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-description {
+        font-size: 1em;
+    }
+}
+
+.filter-group {
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+
 
 
 
