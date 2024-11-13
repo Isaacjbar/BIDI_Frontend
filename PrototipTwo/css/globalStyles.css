@@ -873,7 +873,12 @@ input[type="password"] {
         width: 35px;
         height: 18px;
     }
+    .slider::before{
+        height: 15px;
+        width: 15px;
+    }
 }
+    
 
 @media (max-width: 400px) {
     .sidebar {
@@ -911,6 +916,9 @@ input[type="password"] {
         font-size: 0.8em;
     }
 }
+
+
+
 
 /* Responsividad para pantallas grandes*/
 @media (min-width: 1200px) {
