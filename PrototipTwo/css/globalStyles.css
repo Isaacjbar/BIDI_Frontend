@@ -16,13 +16,15 @@ body {
     overflow: hidden;
     overflow-y: auto;
 }
+
+
 /*TODO SOBRE EL NAV*/ 
 
-/* Estilos del icono del libro circular */
+
 .book-icon {
-    width: 40px; /* Ajusta el tamaño del icono */
+    width: 40px;
     height: 40px;
-    fill: white; /* Color del icono */
+    fill: white; 
 }
 
 /* Contenedor del logo y el texto "BIDI" */
@@ -31,52 +33,52 @@ body {
     align-items: center;
     cursor: pointer;
 
-    transition: transform 0.3s ease; /* Transición suave para el hover */
+    transition: transform 0.3s ease;
 }
 
 .logo-container:hover {
-    transform: scale(1.1); /* Agranda ligeramente el logo y el texto al pasar el mouse */
+    transform: scale(1.1); 
 }
 
-/* Estilos del texto "BIDI" */
+
 .logo-text {
-    font-size: 1.5rem; /* Tamaño del texto */
+    font-size: 1.5rem; 
     font-weight: 700;
     color: white;
-    margin-left: 10px; /* Espacio entre el logo y el texto */
+    margin-left: 10px; 
 }
 
-/* Estilos del icono de perfil */
+
 .profile-icon {
     display: flex;
     align-items: center;
-    margin-left: 20px; /* Espacio entre los links y el ícono de perfil */
-    transition: transform 0.3s ease; /* Transición suave para el hover */
+    margin-left: 20px; 
+    transition: transform 0.3s ease; 
 }
 
 .profile-icon svg {
     width: 32px;
     height: 32px;
-    stroke: white; /* Color blanco del icono */
-    transition: transform 0.3s ease; /* Efecto de transición suave al hacer hover */
+    stroke: white;
+    transition: transform 0.3s ease; 
 }
 
-/* Efecto de hover para agrandar el icono de perfil */
+
 .profile-icon:hover svg {
-    transform: scale(1.2); /* Agranda el icono al pasar el mouse */
+    transform: scale(1.2); 
 }
 
 /* Navbar Styles */
 .navbar {
-    background-color: #001f4d; /* Fondo azul oscuro */
+    background-color: #001f4d;
     color: white;
     padding: 1rem;
     display: flex;
-    justify-content: space-between; /* Logo a la izquierda, links a la derecha */
+    justify-content: space-between; 
     align-items: center;
 }
 
-/* Contenedor de los enlaces y el icono de perfil */
+
 .nav-container {
     display: flex;
     align-items: center;
@@ -86,7 +88,7 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1rem; /* Espacio entre los enlaces */
+    gap: 1rem; 
 }
 
 .nav-links li {
@@ -103,6 +105,119 @@ body {
     text-decoration: none;
     font-weight: 600;
 }
+
+/* Estilos básicos */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #00264d;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile-icon {
+    margin-left: 20px;
+}
+
+/* El menu hamburguesa lo puedes cambiar de posicion */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+
+/* Por defecto asi esta en display none*/
+.side-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 30%;
+    width: 195px;
+    background-color: #00264d;
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
+    padding-top: 35px;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+    display: flex;
+    
+}
+
+.side-menu.active {
+    z-index: 1000;
+    display: block;
+    transform: translateX(0);
+    
+}
+
+.side-menu-links {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.side-menu-links li {
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.side-menu-links a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Este es el boton para cerrar el menu lateral */
+.close-btn {
+    font-size: 24px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+
+@media (max-width: 800px) {
+    .nav-links {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
 
 /* Footer Styles */
 .footer {

@@ -9,16 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Iconos-->
 </head>
 <body>
-    <!-- Fondo de animación -->
+    
     <div class="background-container">
         <div class="wave-container">
             <div class="wave left"></div>
             <div class="wave right"></div>
         </div>
     </div>
-    <!-- Barra lateral -->
+
+
     <aside class="sidebar">
-        <!-- Icono para Registrar -->
+
+        
         <div class="icon" title="Registrar" onclick="openModal()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
@@ -42,7 +44,8 @@
     <!-- Navbar -->
     <header>
         <nav class="navbar">
-            <!-- Contenedor del logo y texto "BIDI" -->
+            
+            
             <div class="logo-container" title="Ir al inicio">
                 <div class="logo">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
@@ -59,8 +62,8 @@
                 </div>
                 <span class="logo-text">BIDI</span>
             </div>
-
-            <!-- Enlaces de navegación e icono de perfil -->
+    
+            
             <div class="nav-container">
                 <ul class="nav-links">
                     <li><a href="#">Usuarios</a></li>
@@ -68,7 +71,24 @@
                     <li><a href="#">Libros</a></li>
                     <li><a href="#">Préstamos</a></li>
                 </ul>
-
+    
+                
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+    
+                <div class="side-menu" id="sideMenu">
+                    <button class="close-btn" onclick="toggleMenu()">x</button>
+                    <ul class="side-menu-links">
+                        <li><a href="#">Usuarios</a></li>
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Libros</a></li>
+                        <li><a href="#">Préstamos</a></li>
+                    </ul>
+                </div>
+    
                 <!-- Ícono de perfil -->
                 <div class="profile-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="white" stroke-width="4">
@@ -79,6 +99,8 @@
             </div>
         </nav>
     </header>
+    
+    
     
     <!-- Contenido Principal -->
     <main class="content">
@@ -225,6 +247,7 @@
         <p>&copy; 2024 BIDI. Todos los derechos reservados.</p>
     </footer>
     <script src="../js/script.js"></script> <!-- Asegúrate de que la ruta sea correcta -->
+    <script src="../js/menu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/Alertas.js"></script>
 </body>
