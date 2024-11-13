@@ -159,10 +159,9 @@ body {
     position: fixed;
     top: 0;
     right: 0;
-    height: 30%;
-    width: 195px;
+    height: 50%;
+    width: 200px;
     background-color: #00264d;
-    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
     padding-top: 35px;
     transform: translateX(100%);
     transition: transform 0.5s ease;
