@@ -44,8 +44,6 @@
     <!-- Navbar -->
     <header>
         <nav class="navbar">
-            
-            
             <div class="logo-container" title="Ir al inicio">
                 <div class="logo">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
@@ -63,7 +61,6 @@
                 <span class="logo-text">BIDI</span>
             </div>
     
-            
             <div class="nav-container">
                 <ul class="nav-links">
                     <li><a href="#">Usuarios</a></li>
@@ -72,7 +69,6 @@
                     <li><a href="#">Préstamos</a></li>
                 </ul>
     
-                
                 <div class="menu-toggle" onclick="toggleMenu()">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -100,23 +96,21 @@
         </nav>
     </header>
     
-    
-    
-    <!-- Contenido Principal -->
-    <main class="content">
-        <div class="section-header">
-            <div class="title-container">
-            <h1 class="section-title">Gestión de Usuarios</h1>
+        <!-- Contenido Principal -->
+        <main class="content">
+            <div class="section-header">
+                <div class="title-container">
+                <h1 class="section-title">Gestión de Usuarios</h1>
+                </div>
+                <div class="filter-group">
+                    <span class="status-text" id="statusText">Inactivos</span>
+                    <label class="switch">
+                        <input type="checkbox" id="statusSwitch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
-            <div class="filter-group">
-                <span class="status-text" id="statusText">Inactivos</span>
-                <label class="switch">
-                    <input type="checkbox" id="statusSwitch">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-        
+            
     <!-- Modal de Registro -->
     <div id="registerModal" class="modal">
     <div class="modal-container">
