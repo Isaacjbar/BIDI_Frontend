@@ -114,17 +114,13 @@
 }
 
 .card-edit-icon {
-    display: none; /* Inicialmente oculto */
+    display: inline; /* Inicialmente oculto */
     position: absolute;
     right: 22px;
     cursor: pointer;
     fill: #8d8f8d; /* Color del icono de lápiz */
 }
 
-/* Cuando el modo de editar está activo */
-.card.edit-mode .card-edit-icon {
-    display: inline; /* Mostrar el icono de lápiz */
-}
 
 @keyframes bounceIn {
     0% {

@@ -16,6 +16,7 @@ function closeModal(modalId) {
     setTimeout(() => {
         modal.style.display = "none";
     }, 300);
+
 }
 
 // Función para abrir el modal de edición
@@ -42,6 +43,12 @@ function openEditModal(card) {
     setTimeout(() => {
         editModal.classList.add("show");
     }, 10);
+
+      // Agregar evento para eliminar highlight al cerrar el modal
+      const closeModalButton = document.querySelector(".close-button");
+      closeModalButton.addEventListener("click", () => {
+          removeHighlightOnModalClose();
+      });
 }
 
 // Cerrar el modal al hacer clic fuera del contenido
@@ -50,3 +57,11 @@ window.onclick = function (event) {
         closeModal(event.target.id);
     }
 };
+
+function addEditIconHandler(card) {
+    const editIcon = card.querySelector('.card-edit-icon');
+    editIcon.addEventListener('click', (event) => {
+        event.stopPropagation(); // Evitar que otros eventos de clic se activen
+        openEditModal(card);
+    });
+}

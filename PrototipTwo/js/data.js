@@ -201,6 +201,7 @@ const data = {
       }
     ]
   };
+
   
   // Función para agregar tarjetas desde los datos JSON
   function addCardsFromData(data) {
@@ -239,17 +240,25 @@ const data = {
   
       // Agregar el botón de activación/desactivación a la tarjeta
       addToggleButton(card);
-  
+      setupCardListeners(card);
       // Agregar evento al ícono de edición
-      card.querySelector(".card-edit-icon").addEventListener("click", (event) => {
-        event.stopPropagation();
-        openEditModal(card);
-      });
-  
+      addEditIconHandler(card);
+      
       // Agregar la tarjeta al contenedor
       cardContainer.appendChild(card);
     });
+    initializeScrollReveal();
   }
+// Asignar eventos a las tarjetas existentes en la página
+// Inicializar ScrollReveal al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  initializeScrollReveal();
+
+  // Configurar eventos para las tarjetas existentes
+  document.querySelectorAll('.card').forEach(card => {
+      setupCardListeners(card);
+  });
+});
   
   // Llamar a la función para cargar las tarjetas al inicio
   document.addEventListener("DOMContentLoaded", () => {

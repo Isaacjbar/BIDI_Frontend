@@ -35,9 +35,12 @@ function addCard(event) {
         Swal.fire({ icon: 'error', title: 'Contraseña insegura', text: 'La contraseña debe tener al menos 8 caracteres.' });
         return;
     }
-
+    
     Swal.fire({
-        icon: 'success', title: 'Registro exitoso', text: 'La tarjeta ha sido registrada exitosamente.', didClose: () => {
+        icon: 'success', 
+        title: 'Registro exitoso', 
+        text: 'La tarjeta ha sido registrada exitosamente.', 
+        didClose: () => {
             const cardContainer = document.querySelector('.card-container');
             const card = document.createElement('div');
             card.classList.add('card');
@@ -70,12 +73,10 @@ function addCard(event) {
                 </div>
             `;
 
+            setupCardListeners(card);
             addToggleButton(card);
-
-            card.querySelector(".card-edit-icon").addEventListener("click", (event) => {
-                event.stopPropagation();
-                openEditModal(card);
-            });
+            addEditIconHandler(card);
+            initializeScrollReveal();
 
             cardContainer.appendChild(card);
 
@@ -84,6 +85,15 @@ function addCard(event) {
         }
     });
 }
+// Asignar eventos a las tarjetas existentes en la página
+document.addEventListener("DOMContentLoaded", () => {
+    initializeScrollReveal();
+
+    // Configurar eventos para las tarjetas existentes
+    document.querySelectorAll('.card').forEach(card => {
+        setupCardListeners(card);
+    });
+});
 
 // Función para guardar los cambios en la tarjeta después de editar
 document.getElementById("editForm").addEventListener("submit", function (event) {
@@ -131,3 +141,65 @@ document.getElementById("editForm").addEventListener("submit", function (event) 
         closeModal('editModal');
     });
 });
+
+function handleCardClick(event) {
+    const card = event.currentTarget;
+    // Remover el highlight de la tarjeta previamente seleccionada
+    if (selectedCard) {
+        selectedCard.classList.remove('highlight');
+    }
+ 
+    // Abrir el modal de edición al segundo clic
+    if (selectedCard === card) {
+        openEditModal(card); // Abre el modal
+        return;
+    }
+
+    // Asignar la tarjeta actual como seleccionada y agregar el highlight
+    selectedCard = card;
+    selectedCard.classList.add('highlight');
+}
+
+// Función para remover el highlight al hacer clic fuera de las tarjetas
+function handleClickOutside(event) {
+    if (!event.target.closest('.card')) {
+        if (selectedCard) {
+            selectedCard.classList.remove('highlight');
+            selectedCard = null;
+        }
+    }
+}
+
+// Agregar evento de clic a todas las tarjetas y al documento
+document.addEventListener('click', handleClickOutside);
+
+function addCardEventListeners(card) {
+    card.addEventListener('click', handleCardClick);
+}
+
+// Llamar a esta función después de crear una tarjeta
+function setupCardListeners(card) {
+    card.addEventListener('click', handleCardClick);
+}
+
+// Inicializar ScrollReveal para las tarjetas
+function initializeScrollReveal() {
+    const cards = document.querySelectorAll('.card:not(.revealed)');
+
+    cards.forEach(card => {
+        card.classList.add('revealed');
+        // Asignar un delay aleatorio a cada tarjeta
+        const randomDelay = Math.random() * 300; // Delay entre 0 y 300 ms
+
+        ScrollReveal().reveal(card, {
+            duration: 400,           // Duración rápida de la animación
+            distance: '10px',        // Distancia desde la que aparece
+            origin: 'bottom',        // Animación desde abajo
+            opacity: 0,              // Empieza invisible
+            scale: 0.95,             // Comienza con un leve escalado
+            easing: 'ease-in-out',   // Entrada y salida suave
+            reset: true,             // La animación se reinicia si entra de nuevo en el viewport
+            delay: randomDelay       // Delay aleatorio para cada tarjeta
+        });
+    });
+}

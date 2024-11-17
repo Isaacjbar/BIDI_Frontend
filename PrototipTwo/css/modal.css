@@ -9,11 +9,14 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semi-transparente */
     opacity: 0;
+    display: flex; /* Usa flexbox para centrar */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; 
     transition: opacity 0.3s ease; /* Transición de opacidad */
 }
 
 .modal.show {
-    display: block; /* Muestra el modal */
+    display: flex; /* Muestra el modal */
     opacity: 1; 
 }
 
@@ -26,6 +29,10 @@
     overflow-x: hidden;
     transform: translateY(-20px); /* Posición inicial para la animación */
     transition: transform 0.3s ease; /* Transición de posición */
+    max-width: 90%;
+    box-sizing: border-box;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
 }
 
 .modal.show .modal-container {
@@ -38,6 +45,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    border-top-left-radius: 8px; /* Redondeo de las esquinas superiores */
+    border-top-right-radius: 8px;
+    box-sizing: border-box;
+    margin: 0; 
 }
 .modal-title {
     margin: 0;
@@ -70,7 +82,7 @@
 .modal-footer {
     padding: 10px;
     text-align: right;
-
+    
 }
 .btn-submit {
     padding: 10px 20px;

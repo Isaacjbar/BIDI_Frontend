@@ -86,10 +86,9 @@
 
 @media (max-width: 600px) {
     .modal-container {
-        width: 65%;
-        max-width: 80%;
-        margin: 5% auto;
-        padding: 10px;
+        width: 60%;
+        max-width: 60%;
+        margin: 10% auto;
     }
 
     .modal-title {
@@ -106,6 +105,12 @@
     }
     .modal-header{
         padding: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+    padding-left: 2rem;    /* Espacio para el icono */
     }
 }
 
@@ -175,6 +180,35 @@
     }
 }
 
+@media (max-width: 401px) {
+    .modal-container {
+        width: 80%;
+        max-width: 80%;
+        margin: 15% auto;
+    }
+
+    .modal-title {
+        font-size: 17px;
+    }
+
+    .form-group input {
+        padding: 6px;
+    }
+
+    .btn-submit, .btn-cancel {
+        font-size: 14px;
+        padding: 6px 14px;
+    }
+    .modal-header{
+        padding: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+    padding-left: 2rem;    /* Espacio para el icono */
+    }
+}
 
 
 
@@ -224,4 +258,34 @@
     .card-description {
         font-size: 1em;
     }
+}
+
+@media (max-width: 1200px) {
+    .modal-container {
+        width: 40%;
+        max-width: 50%;
+        margin: 5% auto;
+    }
+
+    .modal-title {
+        font-size: 17px;
+    }
+
+    .form-group input {
+        padding: 6px;
+    }
+
+    .btn-submit, .btn-cancel {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    .modal-header{
+        padding: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+    padding-left: 2rem;    /* Espacio para el icono */
+}
 }
