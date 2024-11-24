@@ -21,7 +21,6 @@
 }
 
 .modal-container {
-    margin: 2% auto; /* Centra el modal en la pantalla */
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -33,6 +32,7 @@
     box-sizing: border-box;
     top: 50%; /* Centrado vertical */
     left: 50%; /* Centrado horizontal */
+    
 }
 
 .modal.show .modal-container {
@@ -72,7 +72,9 @@
     margin-bottom: 5px;
     text-align: left;
 }
-.form-group input {
+.form-group input, 
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
@@ -82,7 +84,7 @@
 .modal-footer {
     padding: 10px;
     text-align: right;
-    
+
 }
 .btn-submit {
     padding: 10px 20px;
@@ -125,7 +127,9 @@
     color: var(--main-bg-color);
 }
 
-.input-icon input {
+.input-icon input,
+.input-icon select,
+.input-icon textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
@@ -136,6 +140,9 @@
 input[type="text"],
 input[type="email"],
 input[type="tel"],
-input[type="password"] {
+input[type="password"],
+.form-group select,
+.form-group textarea,
+.form-group p {
     padding-left: 2rem;    /* Espacio para el icono */
 }

@@ -6,6 +6,6 @@
     padding: .05rem;
     position: relative;
     bottom: 0;
-    z-index: 2;
+    z-index: 1;
     width: 100%;
 }
