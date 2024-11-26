@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 localStorage.setItem('jwt', authResponse.jwt);
                 if (authResponse.role.includes("ADMINISTRADOR")) {
-                    showAlert('success', 'Éxito', 'Inicio de sesión exitoso', 'dashboard.html');
+                    showAlert('success', 'Éxito', 'Inicio de sesión exitoso', '/Admin/vistas/dashboard.html');
                 } else if (authResponse.role.includes("CLIENTE")) {
                     showAlert('success', 'Éxito', 'Inicio de sesión exitoso', 'menu.html');
                 }
