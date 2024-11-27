@@ -1,4 +1,8 @@
+import { showAlert, emailVerify, BASE_API_URL, GLOBAL_HTML_PATH, UNLOGIN } from '../../Config/config.js';
+
 document.addEventListener("DOMContentLoaded", function () {
+
+    emailVerify();
 
     const email = localStorage.getItem("email");
     const resetButton = document.getElementById("resetButton");
@@ -16,12 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch("http://localhost:8080/sibi/global/reset-password", {
+            const response = await fetch(BASE_API_URL + "global/reset-password", {
                 method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "*/*"
-                },
+                headers: UNLOGIN,
                 body: JSON.stringify(
                     {
                         correo: email,
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await response.json();
 
             if (data.type === 'SUCCESS') {
-                showAlert('success', 'Éxito', data.text, '/GestionDeBibliotecas/templates/global/login.html');
+                showAlert('success', 'Éxito', data.text, GLOBAL_HTML_PATH + 'login.html');
             }
         } catch (error) {
             showAlert('error', 'Error', 'Hubo un error, vuelve a intentarlo', '');

@@ -7,6 +7,7 @@
     <title>Recuperar Contraseña</title>
     <link rel="stylesheet" href="../css/recu_contra.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -14,17 +15,18 @@
         <div class="form-box">
             <h2>Recuperar Contraseña</h2>
             <p>Ingresa tu correo electrónico para recuperar tu cuenta</p>
-            <form action="process-recovery.php" method="post">
+            <form>
                 <div class="input-box">
-                    <input type="email"placeholder="Correo electrónico" name="email" required>
+                    <input id="email" type="email" placeholder="Correo electrónico" name="email" required>
                 </div>
-                <button type="submit" class="submit-btn">Enviar enlace</button>
+                <button id="requestButton" class="submit-btn">Enviar enlace</button>
             </form>
             <div class="back-link">
                 <a href="login.html"><i class="fa-solid fa-arrow-left"></i> Volver al inicio de sesión</a>
             </div>
         </div>
     </div>
+    <script type="module" src="../js/request_password_reset.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+import { showAlert, BASE_API_URL, USER_HTML_PATH, ADMIN_HTML_PATH, GLOBAL_HTML_PATH, UNLOGIN } from '../../Config/config.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     const loginButton = document.getElementById("loginButton");
     const registerButton = document.getElementById("registerButton");
@@ -11,8 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordRegister = document.getElementById("passwordRegister");
     const passwordRegisterConfirmed = document.getElementById("passwordRegisterConfirmed");
 
-    const url = "http://localhost:8080/sibi/";
-
     loginButton.addEventListener("click", async function (event) {
         event.preventDefault();
 
@@ -20,12 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = passwordLogin.value;
 
         try {
-            const response = await fetch(url + "auth/login", {
+            const response = await fetch(BASE_API_URL + "auth/login", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "*/*"
-                },
+                headers: UNLOGIN,
                 body: JSON.stringify({
                     email: email,
                     password: password
@@ -34,16 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const authResponse = await response.json();
-            console.log(authResponse);
 
             if (!authResponse.jwt) {
                 showAlert('error', 'Error', authResponse.email, '');
             } else {
                 localStorage.setItem('jwt', authResponse.jwt);
                 if (authResponse.role.includes("ADMINISTRADOR")) {
-                    showAlert('success', 'Éxito', 'Inicio de sesión exitoso', '/Admin/vistas/dashboard.html');
+                    showAlert('success', 'Éxito', 'Inicio de sesión exitoso', ADMIN_HTML_PATH + 'dashboard.html');
                 } else if (authResponse.role.includes("CLIENTE")) {
-                    showAlert('success', 'Éxito', 'Inicio de sesión exitoso', 'menu.html');
+                    showAlert('success', 'Éxito', 'Inicio de sesión exitoso', USER_HTML_PATH + 'menu.html');
                 }
             }
         } catch (error) {
@@ -66,12 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch(url + "global/register", {
+            const response = await fetch(BASE_API_URL + "global/register", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "*/*"
-                },
+                headers: UNLOGIN,
                 body: JSON.stringify(
                     {
                         nombre: name,
@@ -95,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const successResponse = await response.json();
-            showAlert('success', 'Éxito', successResponse.text + '. Por favor, inicia sesión', 'login.html');
+            showAlert('success', 'Éxito', successResponse.text + '. Por favor, inicia sesión', GLOBAL_HTML_PATH + 'login.html');
         } catch (error) {
             showAlert('error', 'Error', 'Hubo un error, vuelve a intentarlo', '');
         }

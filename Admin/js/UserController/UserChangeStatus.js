@@ -1,26 +1,30 @@
-// UserChangeStatus.js
-import { BASE_API_URL, HEADERS } from '../Config/config.js';
-import { addCards } from './UserFind.js';
+// user/userChangeStatus.js
+import { showAlert, BASE_API_URL, HEADERS } from '../../../config/config.js';
 
-export async function changeUserStatus(userId) {
-    try {
-        const response = await fetch(`${BASE_API_URL}/admin/user/change-status`, {
-            method: "PUT",
-            headers: HEADERS,
-            body: JSON.stringify({ usuarioId: userId }),
-            credentials: 'include'
-        });
+export async function changeUserStatus(event) {
+    if (event.target && event.target.classList.contains('toggle-button')) {
+        const card = event.target.closest('.card');
+        const userId = card.getAttribute('data-user-id');
+        
+        try {
+            const response = await fetch(BASE_API_URL + "admin/user/change-status", {
+                method: "PUT",
+                headers: HEADERS,
+                body: JSON.stringify({ usuarioId: userId }),
+                credentials: 'include'
+            });
 
-        if (!response.ok) {
-            const errorResponse = await response.json();
-            console.error("Error:", errorResponse);
-            return;
+            if (!response.ok) {
+                const errorResponse = await response.json();
+                showAlert('error', 'Error', errorResponse.text || 'Error desconocido', '');
+                return;
+            }
+
+            const successResponse = await response.json();
+            showAlert('success', 'Éxito', successResponse.text, '');
+            // Recargar la lista de usuarios o actualizar el estado
+        } catch (error) {
+            showAlert('error', 'Error', 'Hubo un error, vuelve a intentarlo', '');
         }
-
-        const successResponse = await response.json();
-        console.log("Éxito:", successResponse);
-        await addCards(); // Actualizar la lista
-    } catch (error) {
-        console.error("Error al cambiar el estado del usuario:", error);
     }
 }
