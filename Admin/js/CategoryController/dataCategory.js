@@ -15,21 +15,6 @@ const categoryData = {
         "categoryName": "Clásico",
         "description": "Obras que han resistido la prueba del tiempo en la literatura.",
         "status": "activo"
-      },
-      {
-        "categoryName": "Historia",
-        "description": "Libros que exploran eventos históricos y sus contextos.",
-        "status": "activo"
-      },
-      {
-        "categoryName": "Fantasía",
-        "description": "Historias que incluyen elementos mágicos y mundos imaginarios.",
-        "status": "activo"
-      },
-      {
-        "categoryName": "Infantil",
-        "description": "Libros dirigidos a un público joven, con cuentos e historias educativas.",
-        "status": "activo"
       }
     ]
   };
