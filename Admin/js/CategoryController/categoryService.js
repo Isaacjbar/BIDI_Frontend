@@ -114,24 +114,40 @@ document.addEventListener('DOMContentLoaded', () => {
         result.result.forEach(category => {
         const card = document.createElement('div');
         card.className = 'card';
-    
+        card.setAttribute('data-status', category.status);
         // Agregar contenido a la card
         card.innerHTML = `
             <div class="card-header">
             <div class="card-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#c2bfbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16v16H4z"></path>
-                <path d="M8 8h8"></path>
-                <path d="M8 12h6"></path>
-                <path d="M8 16h4"></path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Primer libro -->
+  <rect x="3" y="4" width="18" height="4" fill="#4caf50"/>
+  <rect x="3" y="5" width="18" height="1" fill="#fff"/>
+  
+  <!-- Segundo libro -->
+  <rect x="3" y="9" width="18" height="4" fill="#2196f3"/>
+  <rect x="3" y="10" width="18" height="1" fill="#fff"/>
+  
+  <!-- Tercer libro -->
+  <rect x="3" y="14" width="18" height="4" fill="#f44336"/>
+  <rect x="3" y="15" width="18" height="1" fill="#fff"/>
+</svg>
+
+                <span class="status-indicator"></span>
             </div>
             <div class="card-title">${category.categoryName}</div>
             <svg class="card-edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92-2.92L5 17.34V19h1.66l.92-.92-1.66-1.67zm2.83-2.83l1.66 1.66 7.5-7.5-1.66-1.66-7.5 7.5zM20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.16 1.16 3.75 3.75 1.16-1.16c-.39-.39-.39-1.02 0-1.41z"/>
+                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/>
             </svg>
         `;
-
+        
+        // Agregar el botón de activación/desactivación a la tarjeta
+        addToggleButton(card);
+        // Agregar evento al ícono de edición
+        card.querySelector(".card-edit-icon").addEventListener("click", (event) => {
+            event.stopPropagation();
+            openEditModal(card);
+        });
         // Asegúrate de que el contenedor está visible antes de agregar las cards
         categoriasList.appendChild(card);
         });
