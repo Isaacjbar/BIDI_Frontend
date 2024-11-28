@@ -68,13 +68,6 @@
                                 <input type="text" id="categoryName" name="categoryName" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="description">Descripción: <span class="required">*</span></label>
-                            <div class="input-icon">
-                                <i class="fas fa-info-circle"></i>
-                                <textarea id="description" name="description" rows="3" required></textarea>
-                            </div>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="cancelar-btn" class="btn-cancel" onclick="closeModal('registerModal')">Cancelar</button>
@@ -100,15 +93,6 @@
                                 <input type="text" id="editCategoryName" name="editCategoryName" required>
                             </div>
                         </div>
-
-                        <!-- Descripción -->
-                        <div class="form-group">
-                            <label for="editDescription">Descripción: <span class="required">*</span></label>
-                            <div class="input-icon">
-                                <i class="fas fa-info-circle"></i>
-                                <textarea id="editDescription" name="editDescription" required></textarea>
-                            </div>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-cancel" onclick="closeModal('editModal')">Cancelar</button>
@@ -127,8 +111,8 @@
     <div id="footer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="../components/js/components.js"></script>
-    <script src="../../global_js/cardFunctions.js"></script>
     <script src="../../global_js/filterFunctions.js"></script>
     <script src="../../global_js/modalFunctions.js"></script>
 

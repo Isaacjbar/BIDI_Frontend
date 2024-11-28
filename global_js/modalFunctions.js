@@ -18,6 +18,14 @@ function closeModal(modalId) {
     }, 300);
 
 }
+// Función para abrir el modal de registro
+function openEditModal() {
+    const modal = document.getElementById("editModal");
+    modal.style.display = "block";
+    setTimeout(() => {
+        modal.classList.add("show");
+    }, 10);
+}
 
 // Cerrar el modal al hacer clic fuera del contenido
 window.onclick = function (event) {
