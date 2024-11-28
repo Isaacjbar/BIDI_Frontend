@@ -1,8 +1,6 @@
 // main.js
-
 let isEditMode = false;
 
-// Función para alternar el estado de edición de las tarjetas
 document.getElementById("editButton").addEventListener("click", function (event) {
     isEditMode = !isEditMode;
 
@@ -16,6 +14,14 @@ document.getElementById("editButton").addEventListener("click", function (event)
         }
     });
     event.stopPropagation();
+});
+// Delegación de eventos para los iconos de edición dentro de las tarjetas
+document.querySelector('.card-container').addEventListener('click', function (event) {
+    const editIcon = event.target.closest('.card-edit-icon'); // Verifica si el clic fue en un icono de edición
+    if (editIcon) {
+        const card = editIcon.closest('.card');
+        openEditModal(card);  // Llama a la función para abrir el modal de edición
+    }
 });
 
 // Agrega un botón de activación/desactivación a una tarjeta y define su comportamiento

@@ -15,33 +15,34 @@
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/cards.css">
     <!-- Fuentes e Iconos -->
+
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-    <!-- Contenedores para los componentes -->
-    <div id="header"></div>
-    
     <!-- Contenido Principal -->
-    <main class="content">
-        <div class="background-container">
-            <div class="wave-container">
-                <div class="wave left"></div>
-                <div class="wave right"></div>
-            </div>
+    <div class="background-container">
+        <div class="wave-container">
+            <div class="wave left"></div>
+            <div class="wave right"></div>
         </div>
+    </div>
 
-        <aside class="sidebar">
-            <div class="icon" title="Registrar" onclick="openModal()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
-                    <path
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
-                </svg>
-            </div>
-        </aside>
+    <aside class="sidebar">
+        <div class="icon" title="Registrar" onclick="openModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+            </svg>
+        </div>
+    </aside>
 
+    <!-- Navbar -->
+    <div id="header"></div>
+
+    <main class="content">
         <div class="section-header">
             <div class="title-container">
                 <h1 class="section-title">Gestión de Usuarios</h1>
@@ -176,19 +177,20 @@
         </div>
 
         <!-- Cards -->
-        <div class="card-container"></div>
+        <div class="card-container" id="user-list"></div>
     </main>
 
     <div id="footer"></div>
 
-    <!-- Scripts -->
-    <script src="../js/FunctionsController/cardFunctions.js"></script>
-    <script src="../js/FunctionsController/filterFunctions.js"></script>
-    <script src="../js/FunctionsController/menuFunctions.js"></script>
-    <script src="../js/FunctionsController/modalFunctions.js"></script>
-    <script src="../js/FunctionsController/main.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="../components/js/components.js"></script>
-    <script type="module" src="../js/UserController/fetch.js"></script>
+    <script src="../../global_js/filterFunctions.js"></script>
+    <script src="../../global_js/modalFunctions.js"></script>
+
+    <script type="module" src="../js/UserController/userService.js"></script>
+    <script src="../js/UserController/main.js"></script>
+
 </body>
+
 </html>
