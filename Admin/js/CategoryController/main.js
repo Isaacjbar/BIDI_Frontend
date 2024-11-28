@@ -22,7 +22,7 @@ document.getElementById("editButton").addEventListener("click", function (event)
 function addToggleButton(card) {
     const button = document.createElement('button');
     button.className = 'toggle-button';
-    button.textContent = card.dataset.status === 'ACTIVE' ? 'Desactivar' : 'Activar';
+    button.textContent = card.dataset.status    === 'ACTIVE' ? 'Desactivar' : 'Activar';
     button.style.backgroundColor = card.dataset.status === 'ACTIVE' ? 'red' : 'green';
 
     // Alterna el estado de activación de la tarjeta al hacer clic
