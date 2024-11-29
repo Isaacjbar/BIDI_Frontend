@@ -16,3 +16,22 @@
     width: 185px; 
     margin-left: 10px; 
 }
+.card-icon {
+    background:linear-gradient(to bottom, #056dbb, #001f4d);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    position: relative;
+
+}
+
+.card-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: #c2bfbf;
+}
