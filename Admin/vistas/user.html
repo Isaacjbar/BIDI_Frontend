@@ -90,7 +90,7 @@
                             <label for="telefono">Teléfono: <span class="required">*</span></label>
                             <div class="input-icon">
                                 <i class="fas fa-phone"></i>
-                                <input type="tel" id="telefono" name="telefono">
+                                <input type="tel" id="telefono" name="telefono" maxlength="10">
                             </div>
                         </div>
                         <div class="form-group">
@@ -109,13 +109,14 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn-cancel" onclick="closeModal('registerModal')">Cancelar</button>
+                        <button type="button" id="cancelar-btn" class="btn-cancel"
+                            onclick="closeModal('registerModal')">Cancelar</button>
                         <button type="submit" class="btn-submit">Registrar</button>
                     </div>
                 </form>
             </div>
         </div>
-
+        
         <!-- Modal de Edición -->
         <div id="editModal" class="modal">
             <div class="modal-container">
@@ -150,7 +151,7 @@
                             <label for="editCardPhone">Teléfono:</label>
                             <div class="input-icon">
                                 <i class="fas fa-phone"></i>
-                                <input type="tel" id="editTelefono" name="telefono" value="7771234567">
+                                <input type="tel" id="editTelefono" name="telefono" maxlength="10" value="7771234567">
                             </div>
                         </div>
                         <div class="form-group">
@@ -182,15 +183,11 @@
 
     <div id="footer"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="../components/js/components.js"></script>
-    <script src="../../global_js/filterFunctions.js"></script>
-    <script src="../../global_js/modalFunctions.js"></script>
 
     <script type="module" src="../js/UserController/userService.js"></script>
     <script src="../js/UserController/main.js"></script>
-
+    <script src="../js/UserController/modalFunctions.js"></script>
 </body>
 
 </html>

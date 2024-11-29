@@ -1,12 +1,16 @@
+// main.js
+
+let isEditMode = false;
+
 // Función para alternar el estado de edición de las tarjetas
-document.getElementById("editButton")?.addEventListener("click", function (event) {
+document.getElementById("editButton").addEventListener("click", function (event) {
     isEditMode = !isEditMode;
 
     // Cambiar el estado de las tarjetas al modo de edición
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
         if (isEditMode) {
-            card.classList.add('edit-mode');  // Añadir clase edit-mode para aplicar estilos de edición
+            card.classList.add('edit-mode');
         } else {
             card.classList.remove('edit-mode');
         }
@@ -15,27 +19,28 @@ document.getElementById("editButton")?.addEventListener("click", function (event
 });
 
 // Agrega un botón de activación/desactivación a una tarjeta y define su comportamiento
-function addToggleButton(card, status) {
+function addToggleButton(card) {
     const button = document.createElement('button');
+    button.id = 'editButton';
     button.className = 'toggle-button';
-    button.textContent = status === 'ACTIVO' ? 'Desactivar' : 'Activar';
-    button.style.backgroundColor = status === 'ACTIVO' ? 'green' : 'red'; // Verde si está activo, rojo si inactivo
+    button.textContent = card.dataset.estado    === 'ACTIVO' ? 'Desactivar' : 'Activar';
+    button.style.backgroundColor = card.dataset.estado === 'ACTIVO' ? 'red' : 'green';
 
     // Alterna el estado de activación de la tarjeta al hacer clic
     button.addEventListener('click', (event) => {
         event.stopPropagation();
+        const isActive = card.getAttribute('data-status') === 'activo';
 
-        // Alterna el estado entre 'ACTIVO' y 'INACTIVO'
-        const newStatus = status === 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
-        card.setAttribute('data-status', newStatus);  // Actualiza el estado en el atributo de datos
+        card.setAttribute('data-status', isActive ? 'inactivo' : 'activo');
+        button.style.backgroundColor = isActive ? 'green' : 'red';
+        button.textContent = isActive ? 'Activar' : 'Desactivar';
 
-        // Actualiza el botón y su color
-        button.style.backgroundColor = newStatus === 'ACTIVO' ? 'green' : 'red';
-        button.textContent = newStatus === 'ACTIVO' ? 'Desactivar' : 'Activar';
-
-        // Actualiza el color del indicador de estado
         const statusIndicator = card.querySelector('.status-indicator');
-        statusIndicator.style.backgroundColor = newStatus === 'ACTIVO' ? '#4CAF50' : '#F44336';
+        if (card.getAttribute('data-status') === 'activo') {
+            statusIndicator.style.backgroundColor = '#4CAF50';
+        } else {
+            statusIndicator.style.backgroundColor = '#F44336';
+        }
     });
 
     card.appendChild(button);
