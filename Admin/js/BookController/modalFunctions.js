@@ -54,7 +54,7 @@ async function openEditModal(card) {
     const bookAuthor = card.querySelector('.card-author').textContent; // Obtiene el autor del libro
     const bookDescription = card.querySelector('.card-description').textContent; // Obtiene la descripción del libro
     const bookCopias = card.querySelector('.card-copias').textContent.replace('Copias: ', ''); // Obtiene las copias
-    
+    console.log(bookCopias);
     // Obtener las categorías como un array de IDs (categoryId)
     const bookCategories = Array.from(card.querySelector('.card-categories').children)
         .map(cat => cat.getAttribute('data-id')); // Usamos el data-id de cada categoría

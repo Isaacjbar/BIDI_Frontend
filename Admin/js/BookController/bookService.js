@@ -219,7 +219,141 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn('No se encontró el botón de estado');
         }
     }
+
+   // Asigna el evento al formulario de registro
+    document.getElementById('registerForm').addEventListener('submit', submitRegisterForm);
+
+    async function submitRegisterForm(event) {
+        event.preventDefault(); // Previene el comportamiento por defecto de enviar el formulario
+
+        const form = document.getElementById('registerForm');
+        const bookData = {
+            title: form.bookTitle.value,
+            author: form.bookAuthor.value,
+            description: form.bookDescription.value,
+            copias: parseInt(form.bookCopias.value, 10),
+            categorias: Array.from(form.registerBookCategories.selectedOptions)
+                .map(option => ({ categoryId: option.value })) // Asegúrate de enviar los IDs correctos
+        };
+
+        console.log('Datos a enviar:', bookData);
+
+        try {
+            const response = await fetch('http://localhost:8080/sibi/admin/book/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('jwt')}` // Asegúrate de enviar el JWT
+                },
+                body: JSON.stringify(bookData)
+            });
+
+            if (response.badRequest) {
+                throw new Error('Error al registrar el libro');
+            }
+            const result = await response.json();
+            console.log('Libro registrado:', result);
     
+            // Cerrar el modal y limpiar el formulario
+            closeModal('registerModal');
+            form.reset();
+    
+            // Verificar si las categorías son null o undefined antes de intentar crear la tarjeta
+            const book = result.result;
+    
+            if (book.categorias && Array.isArray(book.categorias)) {
+                // Si las categorías no son null y son un array, se pueden procesar
+                createBookCard(book);  // Usa el objeto book que contiene los datos del libro registrado
+            } else {
+                // Si no hay categorías, asignar un valor por defecto o mostrar un mensaje
+                console.log('No se encontraron categorías para el libro registrado');
+                book.categorias = []; // Asignar un array vacío en caso de que no haya categorías
+                createBookCard(book);  // Crear la tarjeta igualmente
+            }
+    
+            // Notificar al usuario
+            alert('Libro registrado correctamente');
+        } catch (error) {
+            console.error('Error:', error.message);
+            alert('Hubo un error al registrar el libro.');
+        }
+    }
 
+    // Asigna el evento al formulario de edición
+    document.getElementById('editForm').addEventListener('submit', submitEditForm);
 
+    async function submitEditForm(event) {
+        event.preventDefault(); // Previene el comportamiento por defecto de enviar el formulario
+
+        const form = document.getElementById('editForm');
+        const bookId = form.getAttribute('data-id'); // Obtén el ID del libro desde el formulario
+        const bookData = {
+            bookId: bookId,
+            title: form.editBookTitle.value,
+            author: form.editBookAuthor.value,
+            description: form.editBookDescription.value,
+            copias: parseInt(form.editBookCopias.value, 10),
+            categorias: Array.from(form.editBookCategories.selectedOptions)
+                .map(option => ({ categoryId: option.value })) // Asegúrate de enviar los IDs correctos
+        };
+
+        console.log('Datos a enviar:', bookData);
+
+        try {
+            const response = await fetch(`http://localhost:8080/sibi/admin/book/update`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('jwt')}` // Asegúrate de enviar el JWT
+                },
+                body: JSON.stringify(bookData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al editar el libro');
+            }
+
+            const result = await response.json();
+            console.log('Libro editado:', result);
+
+            // Cerrar el modal y limpiar el formulario
+            closeModal('editModal');
+
+            // Actualizar la tarjeta en el frontend
+            updateBookCard(result.result);
+
+            // Notificar al usuario
+            alert('Libro editado correctamente');
+
+        } catch (error) {
+            console.error('Error:', error.message);
+            alert('Hubo un error al editar el libro.');
+        }
+    }
+
+    // Función para actualizar la tarjeta del libro en el frontend
+    function updateBookCard(updatedBook) {
+        // Encuentra la tarjeta que corresponde al libro editado
+        const card = document.querySelector(`.card[data-id="${updatedBook.bookId}"]`);
+        
+        if (card) {
+            // Actualizar los campos de la tarjeta con los nuevos datos
+            card.querySelector('.card-title').textContent = updatedBook.title;
+            card.querySelector('.card-author').textContent = updatedBook.author;
+            card.querySelector('.card-description').textContent = updatedBook.description;
+            card.querySelector('.card-copias').textContent = `Copias: ${updatedBook.copias}`;
+
+            // Actualizar las categorías (si es necesario)
+            const categoriesElement = card.querySelector('.card-categories');
+            categoriesElement.innerHTML = ''; // Limpiar categorías anteriores
+
+            updatedBook.categorias.forEach(category => {
+                const categoryElement = document.createElement('span');
+                categoryElement.textContent = category.categoryName; // Asume que cada categoría tiene un 'categoryName'
+                categoriesElement.appendChild(categoryElement);
+            });
+        }
+    }
+
+    
 });
