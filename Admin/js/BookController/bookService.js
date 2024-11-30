@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="status-indicator"></span>
                 </div>
                 <div class="card-title">${book.title}</div>
-                <svg class="card-edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/>
-                </svg>
-            </div>
+                    <svg class="card-edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/>
+                    </svg>
+                </div>
             <div class="card-author">${book.author}</div>
             <div class="card-description">${book.description}</div>
             <div class="card-copias">Copias: ${book.copias}</div>
