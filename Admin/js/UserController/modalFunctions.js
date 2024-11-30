@@ -22,15 +22,19 @@ function closeModal(modalId) {
 function openEditModal(card) {
     const userId = card.getAttribute('data-id'); // Obtiene el id del usuario
     const userName = card.querySelector('.card-title').textContent; // Obtiene el nombre del usuario
-    const surname = card.querySelector('.card-description');
-    const email = card.querySelector('.card-description');
-    const phoneNumber = card.querySelector('.card-description');
+    const surname = card.querySelector('.card-surname').textContent;
+    const email = card.querySelector('.card-email').textContent;
+    const phoneNumber = card.querySelector('.card-phoneNumber').textContent;
+
+    const surnameValue = surname.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
+    const emailValue = email.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
+    const phoneNumberValue = phoneNumber.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
 
     // Coloca los valores en los campos del modal de edición
     document.getElementById('editNombres').value = userName;
-    document.getElementById('editApellidos').value = surname;
-    document.getElementById('editEmail').value = email;
-    document.getElementById('editTelefono').value = phoneNumber;
+    document.getElementById('editApellidos').value = surnameValue;
+    document.getElementById('editEmail').value = emailValue;
+    document.getElementById('editTelefono').value = phoneNumberValue;
 
     // Guarda el ID del usuario en un campo oculto o en un atributo del formulario para usarlo más adelante
     const editForm = document.getElementById('editForm');

@@ -19,11 +19,11 @@ document.getElementById("editButton").addEventListener("click", function (event)
 });
 
 // Agrega un botón de activación/desactivación a una tarjeta y define su comportamiento
-function addToggleButton(card) {
+function addToggleButton(card, ) {
     const button = document.createElement('button');
     button.id = 'editButton';
     button.className = 'toggle-button';
-    button.textContent = card.dataset.estado    === 'ACTIVO' ? 'Desactivar' : 'Activar';
+    button.textContent = card.dataset.estado === 'ACTIVO' ? 'Desactivar' : 'Activar';
     button.style.backgroundColor = card.dataset.estado === 'ACTIVO' ? 'red' : 'green';
 
     // Alterna el estado de activación de la tarjeta al hacer clic

@@ -1,5 +1,10 @@
 import { showAlert, jwtVerify, BASE_API_URL, HEADERS, UNLOGIN } from '../../../Config/config.js';
-
+/*
+COSAS POR HACER-> 
+CORREGIR EL COMPORTAMIENTO DEL FORMULARIO ESCONDIDO, 
+CORREGIR EL SOBREPOSICIONAMIENTO DEL FOOTER Y HEADER AL ABRIR MODALES,
+IMPLEMENTAR FOOTER Y HEADER EN EL RESTO DE LAS PAGINAS
+*/
 document.addEventListener('DOMContentLoaded', async function () {
     jwtVerify();
 
@@ -61,7 +66,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             card.setAttribute('data-id', u.usuarioId);
 
             card.innerHTML = `
-                <div class="card">
                     <div class="card-header">
                         <div class="card-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                             </svg>
                             <span class="status-indicator"></span>
                         </div>
-                        <div class="card-title">${u.nombre}</div>
+                        <div class="card-title">${u.nombre || "No disponible"}</div>
                         <svg class="card-edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                             <path
                                 d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92-2.92L5 17.34V19h1.66l.92-.92-1.66-1.67zm2.83-2.83l1.66 1.66 7.5-7.5-1.66-1.66-7.5 7.5zM20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.16 1.16 3.75 3.75 1.16-1.16c-.39-.39-.39-1.02 0-1.41z" />
@@ -78,20 +82,19 @@ document.addEventListener('DOMContentLoaded', async function () {
                     </div>
 
                     <div class="card-body">
-                        <div class="card-description">
+                        <div class="card-surname">
                             <span class="card-data"><strong>Apellidos:</strong></span><br>
-                                <span>${u.apellidos}</span>
+                                <span>${u.apellidos || "No disponible"}</span>
                         </div>
-                        <div class="card-description">
+                        <div class="card-phoneNumber">
                             <span class="card-data"><strong>Teléfono:</strong></span><br>
-                                <span>${u.numeroTelefono}</span>
+                                <span>${u.numeroTelefono || "No disponible"}</span>
                         </div>
-                        <div class="card-description">
+                        <div class="card-email">
                             <span class="card-data"><strong>Correo:</strong></span><br>
-                                <span>${u.correo}</span>
+                                <span>${u.correo || "No disponible"}</span>
                         </div>
                     </div>
-                </div>
             `;
 
             // Agregar el botón de activación/desactivación a la tarjeta
@@ -106,7 +109,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             userList.appendChild(card);
 
             // Ocultar el formulario
-            userForm.classList.add('hidden');
+            closeModal('registerModal');
+            // userForm.classList.add('hidden');
         } catch (error) {
             console.error('Error:', error.message);
             showAlert('error', 'Error', 'Hubo un error al registrar el usuario', '');
@@ -125,10 +129,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         const editConfirmPassword = document.getElementById('editConfirmPassword').value.trim();
 
         const userId = event.target.getAttribute('data-id'); // Obtener el ID del usuario desde el formulario
-        /*
-        const card = document.querySelector(`.card[data-id='${userId}']`);
-        const userStatus = card.getAttribute('data-status'); // Leemos el 'data-status' de la card
-        */
 
         if (editPassword !== editConfirmPassword) {
             showAlert('error', 'Error', 'Las contraseñas no coinciden', '');
@@ -165,16 +165,20 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
 
             const result = await response.json();
-            const updatedUser = result.result;
-
-            // Actualiza la tarjeta correspondiente con la nueva información
-            const cardToUpdate = document.querySelector(`.card[data-id='${userId}']`);
-            cardToUpdate.querySelector('.card-title').textContent = updatedUser.nombre;
-            cardToUpdate.querySelector('.card-description').textContent = updatedUser.apellidos;
-            cardToUpdate.querySelector('.card-description').textContent = updatedUser.numeroTelefono;
-            cardToUpdate.querySelector('.card-description').textContent = updatedUser.correo;
-            cardToUpdate.setAttribute('data-status', updatedUser.estado); // Actualiza el status si es necesario
-
+            // const updatedUser = result.result; 
+            userList.innerHTML = ``;
+            /*
+                        // Actualiza la tarjeta correspondiente con la nueva información
+                        const cardToUpdate = document.querySelector(`.card[data-id='${userId}']`);
+                        cardToUpdate.querySelector('.card-title').textContent = updatedUser.nombre;
+            
+                        cardToUpdate.querySelector('.card-surname span').textContent = updatedUser.apellidos;
+                        cardToUpdate.querySelector('.card-phoneNumber span').textContent = updatedUser.numeroTelefono;
+                        cardToUpdate.querySelector('.card-email span').textContent = updatedUser.correo;
+            
+                        cardToUpdate.setAttribute('data-status', updatedUser.estado); // Actualiza el status si es necesario
+            */
+            loadUsers();
             // Cierra el modal
             closeModal('editModal');
             showAlert('success', 'Éxito', result.text, '');
@@ -184,6 +188,53 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });
 
+    async function updateUserStatus(card, newStatus) {
+        const userId = card.getAttribute('data-id');
+
+        try {
+            const response = await fetch(BASE_API_URL + 'admin/user/change-status', {
+                method: 'PUT',
+                headers: HEADERS,
+                body: JSON.stringify({ usuarioId: userId }),
+                credentials: 'include'
+            });
+
+            if (!response.ok) {
+                const errorResponse = await response.json(); // Usamos await correctamente aquí
+                if (typeof errorResponse === 'object' && !errorResponse.text) {
+                    const errorMessages = Object.values(errorResponse).join(", ");
+                    showAlert('error', 'Error', errorMessages, '');
+                } else if (errorResponse.text) {
+                    showAlert('error', 'Error', errorResponse.text, '');
+                }
+                return;
+            }
+
+            const result = await response.json();
+            showAlert('success', 'Éxito', 'Estado actualizado con éxito', '');
+
+            const updatedUser = result.result;
+            card.setAttribute('data-status', updatedUser.estado);
+            const statusIndicator = card.querySelector('.status-indicator');
+            
+            if (updatedUser.estado === 'ACTIVO') {
+                statusIndicator.style.backgroundColor = '#4CAF50'; // Verde para activo
+            } else {
+                statusIndicator.style.backgroundColor = '#F44336'; // Rojo para inactivo
+            }
+
+            // Actualiza el texto y color del botón
+            const button = card.querySelector('.toggle-button');
+            button.textContent = updatedUser.estado === 'ACTIVO' ? 'Desactivar' : 'Activar';
+            button.style.backgroundColor = updatedUser.estado === 'ACTIVO' ? 'red' : 'green';
+
+        } catch (error) {
+            console.error('Error:', error.message);
+            showAlert('error', 'Error', 'Hubo un error al actualizar el estado del usuario', '');
+        }
+    }
+
+    /*
     function updateUserStatus(card, newStatus) {
         const userId = card.getAttribute('data-id');
 
@@ -199,8 +250,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         })
             .then(response => {
                 if (!response.ok) {
-                    const errorResponse = /*await*/ response.json();
-
+                    const errorResponse = await response.json();
                     if (typeof errorResponse === 'object' && !errorResponse.text) {
                         const errorMessages = Object.values(errorResponse).join(", ");
                         showAlert('error', 'Error', errorMessages, '');
@@ -209,6 +259,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     }
                     return;
                 }
+                showAlert('success', 'Éxito', response.text, '');
                 return response.json();
             })
             .then(result => {
@@ -224,23 +275,33 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 // Actualizar el texto del botón de estado
                 const button = card.querySelector('.toggle-button');
-                button.textContent = updatedUser.status === 'ACTIVO' ? 'Desactivar' : 'Activar';
-                button.style.backgroundColor = updatedUser.status === 'ACTIVO' ? 'red' : 'green';
+                button.textContent = updatedUser.estado === 'ACTIVO' ? 'Desactivar' : 'Activar';
+                button.style.backgroundColor = updatedUser.estado === 'ACTIVO' ? 'red' : 'green';
 
             })
             .catch(error => {
                 console.error('Error:', error.message);
-                alert('Hubo un error al actualizar el estado de la categoría.');
-                showAlert('error', 'Error', 'Hubo un error al actualizar el estado el estado del usuario', '');
+                showAlert('error', 'Error', 'Hubo un error al actualizar el estado del usuario', '');
             });
-    }
+    }*/
 
     // Modificación en la función 'addToggleButton' para integrar la actualización del estado en el backend
     function addToggleButton(card) {
+        console.log(card.estado);
         const button = document.createElement('button');
         button.className = 'toggle-button';
-        button.textContent = card.dataset.estado === 'ACTIVO' ? 'Desactivar' : 'Activar';
-        button.style.backgroundColor = card.dataset.estado === 'ACTIVO' ? 'red' : 'green';
+
+        const status = card.getAttribute('data-status');
+        button.textContent = status === 'ACTIVO' ? 'Desactivar' : 'Activar';
+        button.style.backgroundColor = status === 'ACTIVO' ? 'red' : 'green';
+
+        // Configurar el color del indicador de estado
+        const statusIndicator = card.querySelector('.status-indicator');
+        if (status === 'ACTIVO') {
+            statusIndicator.style.backgroundColor = '#4CAF50'; // Verde
+        } else {
+            statusIndicator.style.backgroundColor = '#F44336'; // Rojo
+        }
 
         // Alterna el estado de activación de la tarjeta al hacer clic
         button.addEventListener('click', (event) => {
@@ -313,7 +374,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 card.setAttribute('data-id', user.usuarioId);
                 // Agregar contenido a la card
                 card.innerHTML = `
-                    <div class="card">
                         <div class="card-header">
                             <div class="card-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -322,7 +382,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                                 </svg>
                                 <span class="status-indicator"></span>
                             </div>
-                            <div class="card-title">${user.nombre}</div>
+                            <div class="card-title">${user.nombre || "No disponible"}</div>
                             <svg class="card-edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                                 <path
                                     d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92-2.92L5 17.34V19h1.66l.92-.92-1.66-1.67zm2.83-2.83l1.66 1.66 7.5-7.5-1.66-1.66-7.5 7.5zM20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.16 1.16 3.75 3.75 1.16-1.16c-.39-.39-.39-1.02 0-1.41z" />
@@ -330,20 +390,19 @@ document.addEventListener('DOMContentLoaded', async function () {
                         </div>
 
                         <div class="card-body">
-                            <div class="card-description">
+                            <div class="card-surname">
                                 <span class="card-data"><strong>Apellidos:</strong></span><br>
-                                    <span>${user.apellidos}</span>
+                                    <span>${user.apellidos || "No disponible"}</span>
                             </div>
-                            <div class="card-description">
+                            <div class="card-phoneNumber">
                                 <span class="card-data"><strong>Teléfono:</strong></span><br>
-                                    <span>${user.numeroTelefono}</span>
+                                    <span>${user.numeroTelefono || "No disponible"}</span>
                             </div>
-                            <div class="card-description">
+                            <div class="card-email">
                                 <span class="card-data"><strong>Correo:</strong></span><br>
-                                    <span>${user.correo}</span>
+                                    <span>${user.correo || "No disponible"}</span>
                             </div>
                         </div>
-                    </div>
                 `;
 
                 // Agregar el botón de activación/desactivación a la tarjeta
@@ -388,7 +447,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 card.setAttribute('data-id', user.usuarioId);
                 // Agregar contenido a la card
                 card.innerHTML = `
-                    <div class="card">
                         <div class="card-header">
                             <div class="card-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -397,7 +455,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                                 </svg>
                                 <span class="status-indicator"></span>
                             </div>
-                            <div class="card-title">${user.nombre}</div>
+                            <div class="card-title">${user.nombre || "No disponible"}</div>
                             <svg class="card-edit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                                 <path
                                     d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92-2.92L5 17.34V19h1.66l.92-.92-1.66-1.67zm2.83-2.83l1.66 1.66 7.5-7.5-1.66-1.66-7.5 7.5zM20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.16 1.16 3.75 3.75 1.16-1.16c-.39-.39-.39-1.02 0-1.41z" />
@@ -405,24 +463,24 @@ document.addEventListener('DOMContentLoaded', async function () {
                         </div>
 
                         <div class="card-body">
-                            <div class="card-description">
+                            <div class="card-surname">
                                 <span class="card-data"><strong>Apellidos:</strong></span><br>
-                                    <span>${user.apellidos}</span>
+                                    <span>${user.apellidos || "No disponible"}</span>
                             </div>
-                            <div class="card-description">
+                            <div class="card-phoneNumber">
                                 <span class="card-data"><strong>Teléfono:</strong></span><br>
-                                    <span>${user.numeroTelefono}</span>
+                                    <span>${user.numeroTelefono || "No disponible"}</span>
                             </div>
-                            <div class="card-description">
+                            <div class="card-email">
                                 <span class="card-data"><strong>Correo:</strong></span><br>
-                                    <span>${user.correo}</span>
+                                    <span>${user.correo || "No disponible"}</span>
                             </div>
-                        </div>
-                    </div>
-                `;
+                        </div> 
+                    `;
 
                 // Agregar el botón de activación/desactivación a la tarjeta
                 addToggleButton(card);
+                console.log(card.estado);
                 // Agregar evento al ícono de edición
                 card.querySelector(".card-edit-icon").addEventListener("click", (event) => {
                     event.stopPropagation();
