@@ -19,7 +19,7 @@ document.getElementById("editButton").addEventListener("click", function (event)
 });
 
 // Agrega un botón de activación/desactivación a una tarjeta y define su comportamiento
-function addToggleButton(card, ) {
+function addToggleButton(card) {
     const button = document.createElement('button');
     button.id = 'editButton';
     button.className = 'toggle-button';
