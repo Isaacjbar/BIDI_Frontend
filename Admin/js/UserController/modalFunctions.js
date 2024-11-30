@@ -1,4 +1,4 @@
-// modalFunctions.js
+// user modalFunctions.js
 
 // Función para abrir el modal de registro
 function openModal() {
@@ -16,20 +16,29 @@ function closeModal(modalId) {
     setTimeout(() => {
         modal.style.display = "none";
     }, 300);
-
 }
 
-// Función para abrir el modal de edición y cargar los datos de la tarjeta seleccionada
+// Función para abrir el modal de edición y cargar los datos del usuario seleccionado
 function openEditModal(card) {
-    const categoryId = card.getAttribute('data-id'); // Obtiene el id de la categoría
-    const categoryName = card.querySelector('.card-title').textContent; // Obtiene el nombre de la categoría
+    const userId = card.getAttribute('data-id'); // Obtiene el id del usuario
+    const userName = card.querySelector('.card-title').textContent; // Obtiene el nombre del usuario
+    const surname = card.querySelector('.card-surname').textContent;
+    const email = card.querySelector('.card-email').textContent;
+    const phoneNumber = card.querySelector('.card-phoneNumber').textContent;
+
+    const surnameValue = surname.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
+    const emailValue = email.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
+    const phoneNumberValue = phoneNumber.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
 
     // Coloca los valores en los campos del modal de edición
-    document.getElementById('editCategoryName').value = categoryName; // Rellena el campo de nombre con el nombre actual de la categoría
+    document.getElementById('editNombres').value = userName;
+    document.getElementById('editApellidos').value = surnameValue;
+    document.getElementById('editEmail').value = emailValue;
+    document.getElementById('editTelefono').value = phoneNumberValue;
 
-    // Guarda el ID de la categoría en un campo oculto o en un atributo del formulario para usarlo más adelante
+    // Guarda el ID del usuario en un campo oculto o en un atributo del formulario para usarlo más adelante
     const editForm = document.getElementById('editForm');
-    editForm.setAttribute('data-id', categoryId); // Guarda el ID en el formulario
+    editForm.setAttribute('data-id', userId); // Guarda el ID en el formulario
 
     // Abre el modal
     const modal = document.getElementById("editModal");

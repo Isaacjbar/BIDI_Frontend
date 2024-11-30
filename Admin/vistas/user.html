@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/waves.css">
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/cards.css">
+    <link rel="stylesheet" href="../css/user/cards.css">
     <!-- Fuentes e Iconos -->
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
@@ -90,7 +90,7 @@
                             <label for="telefono">Teléfono: <span class="required">*</span></label>
                             <div class="input-icon">
                                 <i class="fas fa-phone"></i>
-                                <input type="tel" id="telefono" name="telefono">
+                                <input type="tel" id="telefono" name="telefono" maxlength="10">
                             </div>
                         </div>
                         <div class="form-group">
@@ -109,13 +109,14 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn-cancel" onclick="closeModal('registerModal')">Cancelar</button>
+                        <button type="button" id="cancelar-btn" class="btn-cancel"
+                            onclick="closeModal('registerModal')">Cancelar</button>
                         <button type="submit" class="btn-submit">Registrar</button>
                     </div>
                 </form>
             </div>
         </div>
-
+        
         <!-- Modal de Edición -->
         <div id="editModal" class="modal">
             <div class="modal-container">
@@ -129,42 +130,42 @@
                             <label for="editCardName">Nombres:</label>
                             <div class="input-icon">
                                 <i class="fas fa-user"></i>
-                                <input type="text" id="editNombres" name="Nombres" value="Nombres">
+                                <input type="text" id="editNombres" name="Nombres">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="editCardLastName">Apellidos:</label>
                             <div class="input-icon">
                                 <i class="fas fa-user"></i>
-                                <input type="text" id="editApellidos" name="Apellidos" value="Apellidos">
+                                <input type="text" id="editApellidos">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="editCardEmail">Correo electrónico:</label>
                             <div class="input-icon">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" id="editEmail" name="email" value="correo@gmail.com">
+                                <input type="text" id="editEmail">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="editCardPhone">Teléfono:</label>
                             <div class="input-icon">
                                 <i class="fas fa-phone"></i>
-                                <input type="tel" id="editTelefono" name="telefono" value="7771234567">
+                                <input type="tel" id="editTelefono" maxlength="10">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="editCardPassword">Contraseña:</label>
                             <div class="input-icon">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" id="editPassword" name="password">
+                                <input type="password" id="editPassword">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="editCardRepeatPassword">Confirmar contraseña:</label>
                             <div class="input-icon">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" id="editConfirmPassword" name="confirm-password">
+                                <input type="password" id="editConfirmPassword">
                             </div>
                         </div>
                     </div>
@@ -182,15 +183,11 @@
 
     <div id="footer"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="../components/js/components.js"></script>
-    <script src="../../global_js/filterFunctions.js"></script>
-    <script src="../../global_js/modalFunctions.js"></script>
 
     <script type="module" src="../js/UserController/userService.js"></script>
     <script src="../js/UserController/main.js"></script>
-
+    <script src="../js/UserController/modalFunctions.js"></script>
 </body>
 
 </html>
