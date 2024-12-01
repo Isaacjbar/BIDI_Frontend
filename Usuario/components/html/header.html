@@ -1,0 +1,50 @@
+<header>
+    <nav class="navbar">
+        <div class="logo-container" title="Ir al inicio">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
+                    <g fill="none" stroke="#fff" stroke-width="2">
+                        <rect x="4" y="4" width="28" height="56" rx="10" ry="10" fill="#fff" />
+                        <rect x="32" y="4" width="28" height="56" rx="10" ry="10" fill="none" stroke="#fff" stroke-width="2" />
+                        <line x1="18" y1="14" x2="46" y2="14" stroke="#fff" />
+                        <line x1="18" y1="24" x2="46" y2="24" stroke="#fff" />
+                        <line x1="18" y1="34" x2="46" y2="34" stroke="#fff" />
+                        <line x1="18" y1="44" x2="46" y2="44" stroke="#fff" />
+                        <line x1="18" y1="54" x2="46" y2="54" stroke="#fff" />
+                    </g>
+                </svg>
+            </div>
+            <span class="logo-text">BIDI</span>
+        </div>
+
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="libro.html">Libros</a></li>
+                <li><a href="prestamo.html">Préstamos</a></li>
+            </ul>
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <div class="side-menu" id="sideMenu">
+                <div class="side-menu-background"></div>
+                <button class="close-btn" onclick="toggleMenu()">x</button>
+                <ul class="side-menu-links">
+                    <li><a href="libro.html">Libros</a></li>
+                    <li><a href="prestamo.html">Préstamos</a></li>
+                </ul>
+            </div>
+
+            <!-- Ícono de perfil -->
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="white" stroke-width="4">
+                    <circle cx="32" cy="22" r="10"/>
+                    <path d="M16 44c0-8 6-12 16-12s16 4 16 12v6H16z"/>
+                </svg>
+            </div>
+        </div>
+    </nav>
+</header>

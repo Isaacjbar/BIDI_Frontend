@@ -1,0 +1,72 @@
+.modal-visible {
+    display: flex; /* Siempre visible */
+    position: relative;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto; /* Ajusta automáticamente la altura según el contenido */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Ajusta el ancho del contenedor */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%; /* Ocupa toda la fila */
+}
+
+#userForm {
+    display: flex; /* Configuración en flexbox */
+    flex-wrap: wrap; /* Permite que los elementos fluyan en múltiples filas */
+    gap: 20px; /* Espaciado entre los elementos */
+}
+
+.form-group {
+    flex: 1 1 calc(50% - 20px); /* Configura el tamaño de cada columna */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%; /* Los botones ocupan toda la fila */
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Libros</title>
+
+    <link rel="stylesheet" href="../css/globalStyles.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/waves.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/cards.css">  
+    <link rel="stylesheet" href="../css/modal.css">  
+
+    <link rel="stylesheet" href="../css/book.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Iconos-->
+</head>
+<body>
+    
+    <div class="background-container">
+        <div class="wave-container">
+            <div class="wave left"></div>
+            <div class="wave right"></div>
+        </div>
+    </div>
+    
+    <!-- Navbar -->
+    <div id="header"></div>
+    
+    <main class="content">
+        <div class="section-header">
+            <div class="title-container">
+                <h1 class="section-title">Catálogo de libros</h1>
+            </div>
+        </div>
+        <!-- Modal de Confirmación de Préstamo -->
+        <div id="loanModal" class="modal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h2 class="modal-title">Confirmación de Préstamo</h2>
+                    <button class="close-button" onclick="closeModal('loanModal')">&times;</button>
+                </div>
+                <form id="registerForm">
+                    <div class="modal-body">
+                        <p>Estás a punto de realizar el préstamo del libro:</p>
+                        <h3 id="bookTitle" class="book-title"></h3>
+                        <p>Tienes que devolver el libro en aproximadamente:</p>
+                        <p id="expectedReturnDate" class="expected-date"></p>
+                        <!-- Campos ocultos para almacenar IDs -->
+                        <input type="hidden" id="registerBook" name="registerBook" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-cancel" onclick="closeModal('loanModal')">Cancelar</button>
+                        <button type="submit" class="btn-submit">Confirmar Préstamo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="card-container" id="libros-list" >
+        </div> 
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="../components/js/components.js"></script>
+    <script src="../js/BookController/bookService.js"></script>
+    <script src="../js/BookController/modalFunctions.js"></script>
+</body>
+</html>
