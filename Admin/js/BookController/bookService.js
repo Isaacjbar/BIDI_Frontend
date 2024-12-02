@@ -1,3 +1,6 @@
+import { showAlert } from '../../../Config/config.js';
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // Selección de elementos
     const formularioLibro = document.getElementById('registerForm');
@@ -199,10 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Actualizar el estado en el frontend
             updateFrontendStatus(card, updatedBook);
     
-            console.log('Estado actualizado correctamente en el backend');
+            showAlert('success', 'Éxito', result.text, '');
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al actualizar el estado del libro.');
+            showAlert('error', 'Error', 'Hubo un error al cambiar el estado del libro', '');
         }
     }
     
@@ -283,12 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 book.categorias = []; // Asignar un array vacío en caso de que no haya categorías
                 createBookCard(book);  // Crear la tarjeta igualmente
             }
-    
-            // Notificar al usuario
-            alert('Libro registrado correctamente');
+            showAlert('success', 'Éxito', result.text, '');
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al registrar el libro.');
+            showAlert('error', 'Error', 'Hubo un error', '');
         }
     }
 
@@ -336,11 +337,11 @@ document.addEventListener('DOMContentLoaded', () => {
             updateBookCard(result.result);
 
             // Notificar al usuario
-            alert('Libro editado correctamente');
+            showAlert('success', 'Éxito', result.text, '');
 
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al editar el libro.');
+            showAlert('error', 'Error', 'Hubo un error', '');
         }
     }
 

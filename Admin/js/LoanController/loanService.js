@@ -1,3 +1,5 @@
+import { showAlert } from '../../../Config/config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const loanList = document.getElementById('loan-list'); // Donde se mostrarán los libros
 
@@ -196,11 +198,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
             // Actualizar el estado en el frontend
             updateFrontendStatus(card, updatedLoan);
-    
-            console.log('Estado actualizado correctamente en el backend');
+            showAlert('success', 'Éxito', result.text, '');
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al actualizar el estado del libro.');
+            showAlert('error', 'Error', 'Hubo un error', '');
         }
     }
     
@@ -289,14 +290,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Error: El préstamo no tiene datos válidos');
             }
         
-            // Notificar al usuario
-            alert('Préstamo registrado correctamente');
+            showAlert('success', 'Éxito', result.text, '');
         } catch (error) {
             console.error('Error:', error.message);
             showAlert('error', 'Error', 'Hubo un error al registrar el préstamo', '');
         }
     }
-
-
     
 });

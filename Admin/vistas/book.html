@@ -102,7 +102,7 @@
                         <label for="registerBookCategories">Categoría: <span class="required">*</span></label>
                         <div class="input-icon">
                             <i class="fas fa-list"></i>
-                            <select id="registerBookCategories" name="registerBookCategories" required>
+                            <select id="registerBookCategories" name="registerBookCategories" required multiple>
                                 <option value="" disabled selected>Seleccione una categoría</option>
                             </select>
                         </div>
@@ -164,7 +164,7 @@
                             <label for="editBookCategories">Categoría: <span class="required">*</span></label>
                             <div class="input-icon">
                                 <i class="fas fa-list"></i>
-                                <select id="editBookCategories" name="editBookCategories" required>
+                                <select id="editBookCategories" name="editBookCategories" required multiple>
                                     <option value="" disabled selected>Seleccione una categoría</option>
                                 </select>
                             </div>
@@ -182,7 +182,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../components/js/components.js"></script>
-    <script src="../js/BookController/bookService.js"></script>
+    <script type="module" src="../js/BookController/bookService.js"></script>
     <script src="../js/BookController/main.js"></script>
     <script src="../js/BookController/modalFunctions.js"></script>
 </body>
