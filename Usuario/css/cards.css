@@ -81,7 +81,7 @@
     border: 2px solid #e0e0e0;
 }
 
-.card[data-status="inactivo"] .status-indicator {
+.card[data-status="INACTIVE"] .status-indicator {
     background-color: #F44336;
 }
 

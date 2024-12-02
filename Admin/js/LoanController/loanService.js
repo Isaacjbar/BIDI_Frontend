@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Función para formatear fechas
-function formatDate(dateString) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', options);
-}
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(dateString);
+        return date.toLocaleDateString('es-ES', options);
+    }
 
     // Función para crear una tarjeta de libro
     function createLoanCard(loan) {
@@ -237,7 +237,7 @@ function formatDate(dateString) {
         // Verificar si el elemento existe
         if (fechaDevolucion) {
             // Si fechaDevolucionR es null, mostrar "Pendiente", de lo contrario mostrar la fecha
-            fechaDevolucion.textContent = fechaDevolucionR ? fechaDevolucionR : "Pendiente";
+            fechaDevolucion.textContent = fechaDevolucionR ? formatDate(fechaDevolucionR) : "Pendiente";
         } else {
             console.warn
         }
