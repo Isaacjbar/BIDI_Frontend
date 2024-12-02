@@ -3,7 +3,14 @@
 // Función para abrir el modal de registro
 function openModal() {
     const modal = document.getElementById("registerModal");
-    modal.style.display = "block";
+
+    // Limpia los campos del formulario de registro
+    const registerForm = modal.querySelector("form");
+    if (registerForm) {
+        registerForm.reset();
+    }
+
+    modal.style.display = "flex";
     setTimeout(() => {
         modal.classList.add("show");
     }, 10);
@@ -26,9 +33,9 @@ function openEditModal(card) {
     const email = card.querySelector('.card-email').textContent;
     const phoneNumber = card.querySelector('.card-phoneNumber').textContent;
 
-    const surnameValue = surname.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
-    const emailValue = email.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
-    const phoneNumberValue = phoneNumber.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
+        const surnameValue = surname.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
+        const emailValue = email.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
+        const phoneNumberValue = phoneNumber.split(':').slice(1).join(':').trim();  // Eliminar la parte antes del ":"
 
     // Coloca los valores en los campos del modal de edición
     document.getElementById('editNombres').value = userName;

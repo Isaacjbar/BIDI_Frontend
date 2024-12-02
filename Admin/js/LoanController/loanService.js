@@ -29,9 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al cargar los prestamos.');
+            showAlert('error', 'Error', 'Hubo un error al cargar los préstamos', '');
         }
     }
+
+    // Función para formatear fechas
+function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', options);
+}
 
     // Función para crear una tarjeta de libro
     function createLoanCard(loan) {
@@ -40,23 +47,45 @@ document.addEventListener('DOMContentLoaded', () => {
         card.setAttribute('data-status', loan.status);
         card.setAttribute('data-id', loan.prestamoId);
 
+        // Formatear las fechas antes de mostrarlas
+    const fechaPrestamoFormatted = formatDate(loan.fechaPrestamo);
+    const fechaVencimientoFormatted = formatDate(loan.fechaVencimiento);
+    const DevolucionFormatted = loan.fechaDevolucion ? formatDate(loan.fechaDevolucion) : "Pendiente";
+
+
         // Crear el HTML de la tarjeta, ahora iterando sobre las categorías
         card.innerHTML = `
-            <div class="card-header">
-                <div class="card-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#c2bfbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                    </svg>
-                    <span class="status-indicator"></span>
-                </div>
+             <div class="card-header">
+            <div class="card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#c2bfbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                <span class="status-indicator"></span>
             </div>
-                <div class="card-description" id="loan-user-name">${loan.usuario.nombre}</div>
-                <div class="card-description" id="loan-book-title">"${loan.libro.title}"</div>
-                <div class="card-description" id="loan-fechaPrestamo">${loan.fechaPrestamo}</div>
-                <div class="card-description" id="loan-fechaVencimiento">${loan.fechaVencimiento}</div>
-                <div class="card-description" id="loan-fechaDevolucion">${loan.fechaDevolucion!=null?loan.fechaDevolucion:"Pendiente"}</div>
+        </div>
+        <div class="card-body">
+            <div class="card-description" id="loan-user-name">
+                <span class="card-data"><strong>Usuario:</strong></span><br>
+                ${loan.usuario.nombre} ${loan.usuario.apellidos}
             </div>
+            <div class="card-description" id="loan-book-title">
+                <span class="card-data"><strong>Libro:</strong></span><br>
+                "${loan.libro.title}"
+            </div>
+            <div class="card-description" id="loan-fechaPrestamo">
+                <span class="card-data"><strong>Fecha de Préstamo:</strong></span><br>
+                ${fechaPrestamoFormatted}
+            </div>
+            <div class="card-description" id="loan-fechaVencimiento">
+                <span class="card-data"><strong>Fecha de Vencimiento:</strong></span><br>
+                ${fechaVencimientoFormatted}
+            </div>
+            <div class="card-description" id="loan-fechaDevolucion">
+                <span class="card-data"><strong>Devolución:</strong></span><br>
+                ${DevolucionFormatted}
+            </div>
+        </div>
         `;
 
         // Agregar el botón de activación/desactivación a la tarjeta
@@ -97,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al cargar los libros.');
+            showAlert('error', 'Error', 'Hubo un error al cargar los libros', '');
         }
     }
 
@@ -264,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Préstamo registrado correctamente');
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al registrar el préstamo.');
+            showAlert('error', 'Error', 'Hubo un error al registrar el préstamo', '');
         }
     }
 

@@ -18,6 +18,7 @@
 .modal.show {
     display: flex; /* Muestra el modal */
     opacity: 1; 
+
 }
 
 .modal-container {
@@ -125,7 +126,9 @@
     color: var(--main-bg-color);
 }
 
-.input-icon input {
+.input-icon input,
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
@@ -136,6 +139,9 @@
 input[type="text"],
 input[type="email"],
 input[type="tel"],
-input[type="password"] {
+input[type="password"],
+input[type="number"],
+.form-group textarea,
+.form-group select {
     padding-left: 2rem;    /* Espacio para el icono */
 }

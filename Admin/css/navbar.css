@@ -56,8 +56,13 @@
     display: flex;
     justify-content: space-between; 
     align-items: center;
+    position: relative;
+    z-index: 100;
 }
 
+.navbar::before {
+    z-index: 1; /* Menor que el modal */
+}
 
 .nav-container {
     display: flex;

@@ -1,6 +1,5 @@
 .modal-container{
-    margin: 7% auto; /* Centra el modal en la pantalla */ 
-    
+    margin: 7% auto 7 !important; /* Centra el modal en la pantalla */
 }
 
 .card-container{
@@ -8,30 +7,31 @@
 }
 
 .card {
-    width: 290px; 
-    height: 290px; 
+    width: 300px; 
+    height: 320px; 
 }
 
 .card-title{
-    width: 185px; 
+    width: 175px; 
     margin-left: 10px; 
 }
-.card-icon {
-    background:linear-gradient(to bottom, #056dbb, #001f4d);
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 5px;
-    margin-left: 5px;
-    position: relative;
 
+.card-author {
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
-.card-icon svg {
-    width: 40px;
-    height: 40px;
-    fill: #c2bfbf;
+.card-copias {
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;
 }
+
+.card-categories {
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+

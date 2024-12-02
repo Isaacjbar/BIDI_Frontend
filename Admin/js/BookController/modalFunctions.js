@@ -52,8 +52,8 @@ async function openEditModal(card) {
     const bookId = card.getAttribute('data-id'); // Obtiene el id del libro
     const bookTitle = card.querySelector('.card-title').textContent; // Obtiene el título del libro
     const bookAuthor = card.querySelector('.card-author').textContent; // Obtiene el autor del libro
-    const bookDescription = card.querySelector('.card-description').textContent; // Obtiene la descripción del libro
-    const bookCopias = card.querySelector('.card-copias').textContent.replace('Copias: ', ''); // Obtiene las copias
+    const bookDescription = card.querySelector('.description').textContent; // Obtiene la descripción del libro
+    const bookCopias = card.querySelector('.copias').textContent; // Obtiene las copias
     console.log(bookCopias);
     // Obtener las categorías como un array de IDs (categoryId)
     const bookCategories = Array.from(card.querySelector('.card-categories').children)
@@ -64,7 +64,7 @@ async function openEditModal(card) {
     document.getElementById('editBookTitle').value = bookTitle; // Rellena el campo de título
     document.getElementById('editBookAuthor').value = bookAuthor; // Rellena el campo de autor
     document.getElementById('editBookDescription').value = bookDescription; // Rellena el campo de descripción
-    document.getElementById('editBookCopias').value = bookCopias; // Rellena el campo de copias
+    document.getElementById('editBookCopias').value = parseInt(bookCopias, 10);
 
     // Actualizar el campo de categorías dinámicamente
     const categorySelect = document.getElementById('editBookCategories');
