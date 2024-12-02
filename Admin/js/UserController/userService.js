@@ -200,14 +200,14 @@ document.addEventListener('DOMContentLoaded', async function () {
             });
 
             if (!response.ok) {
-                const errorResponse = await response.json(); // Usamos await correctamente aquí
+                const errorResponse = await response.json();
                 if (typeof errorResponse === 'object' && !errorResponse.text) {
                     const errorMessages = Object.values(errorResponse).join(", ");
                     showAlert('error', 'Error', errorMessages, '');
                 } else if (errorResponse.text) {
                     showAlert('error', 'Error', errorResponse.text, '');
                 }
-                return;
+                return false; // Indicar que la actualización falló
             }
 
             const result = await response.json();
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const updatedUser = result.result;
             card.setAttribute('data-status', updatedUser.estado);
             const statusIndicator = card.querySelector('.status-indicator');
-            
+
             if (updatedUser.estado === 'ACTIVO') {
                 statusIndicator.style.backgroundColor = '#4CAF50'; // Verde para activo
             } else {
@@ -228,9 +228,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             button.textContent = updatedUser.estado === 'ACTIVO' ? 'Desactivar' : 'Activar';
             button.style.backgroundColor = updatedUser.estado === 'ACTIVO' ? 'red' : 'green';
 
+            return true; // Indicar que la actualización fue exitosa
+
         } catch (error) {
             console.error('Error:', error.message);
             showAlert('error', 'Error', 'Hubo un error al actualizar el estado del usuario', '');
+            return false; // Indicar que la actualización falló
         }
     }
 
@@ -285,9 +288,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             });
     }*/
 
-    // Modificación en la función 'addToggleButton' para integrar la actualización del estado en el backend
     function addToggleButton(card) {
-        console.log(card.estado);
         const button = document.createElement('button');
         button.className = 'toggle-button';
 
@@ -304,25 +305,26 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         // Alterna el estado de activación de la tarjeta al hacer clic
-        button.addEventListener('click', (event) => {
+        button.addEventListener('click', async (event) => {
             event.stopPropagation();
             const isActive = card.getAttribute('data-status') === 'ACTIVO';
-
-            // Cambia el estado en el frontend
             const newStatus = isActive ? 'INACTIVO' : 'ACTIVO';
-            card.setAttribute('data-status', newStatus);
-            button.style.backgroundColor = isActive ? 'green' : 'red';
-            button.textContent = isActive ? 'Activar' : 'Desactivar';
 
-            const statusIndicator = card.querySelector('.status-indicator');
-            if (newStatus === 'ACTIVO') {
-                statusIndicator.style.backgroundColor = '#4CAF50';
-            } else {
-                statusIndicator.style.backgroundColor = '#F44336';
-            }
+            // Opcional: Deshabilitar el botón mientras se procesa la solicitud
+            button.disabled = true;
+            button.textContent = isActive ? 'Desactivando...' : 'Activando...';
 
             // Enviar la solicitud al backend para actualizar el estado
-            updateUserStatus(card, newStatus);
+            const success = await updateUserStatus(card, newStatus);
+
+            if (!success) {
+                // Si la actualización falló, no hacer nada ya que la UI no se ha cambiado
+                // Opcional: Restaurar el texto original del botón
+                button.textContent = isActive ? 'Desactivar' : 'Activar';
+            }
+
+            // Rehabilitar el botón después de la solicitud
+            button.disabled = false;
         });
 
         card.appendChild(button);
@@ -434,11 +436,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             if (!response.ok) {
                 const errorText = await response.text();
                 console.error("Error en la respuesta del servidor:", errorText);
-                showAlert('error', 'Error', error.Text, '');
+                showAlert('error', 'Error', errorText, '');
                 return;
             }
 
             const result = await response.json();
+            userList.innerHTML = ''; // Limpiar la lista antes de cargar
 
             result.result.forEach(user => {
                 const card = document.createElement('div');
@@ -480,13 +483,14 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 // Agregar el botón de activación/desactivación a la tarjeta
                 addToggleButton(card);
-                console.log(card.estado);
+
                 // Agregar evento al ícono de edición
                 card.querySelector(".card-edit-icon").addEventListener("click", (event) => {
                     event.stopPropagation();
                     openEditModal(card);
                 });
-                // Asegúrate de que el contenedor está visible antes de agregar las cards
+
+                // Añadir la tarjeta al contenedor
                 userList.appendChild(card);
             });
         } catch (error) {
