@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 showAlert('error', 'Error', authResponse.email, '');
             } else {
                 localStorage.setItem('jwt', authResponse.jwt);
+                localStorage.setItem('userId', authResponse.userId);
                 if (authResponse.role.includes("ADMINISTRADOR")) {
                     showAlert('success', 'Éxito', 'Inicio de sesión exitoso', ADMIN_HTML_PATH + 'dashboard.html');
                 } else if (authResponse.role.includes("CLIENTE")) {
