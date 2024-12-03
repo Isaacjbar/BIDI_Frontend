@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       // Validación básica
       if (!categoryName || categoryName.length < 3) {
-        alert('El nombre debe tener al menos 3 caracteres.');
+        showAlert('error', 'Error', 'El nombre debe tener al menos 3 caracteres', '');
         return;
       }
   
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const categoryStatus = card.getAttribute('data-status'); // Leemos el 'data-status' de la card
 
       if (!categoryName || categoryName.length < 3) {
-          alert('El nombre debe tener al menos 3 caracteres.');
+          showAlert('error', 'Error', 'El nombre debe tener al menos 3 caracteres.', '');
           return;
       }
 
@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       } catch (error) {
           console.error('Error:', error.message);
-          alert('Hubo un error al cargar las categorías.');
+          showAlert('error', 'Error', 'Hubo un error al cargar las categorías', '');
       }
     }
 
@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //   }
     } catch (error) {
       console.error('Error:', error.message);
-      alert('Hubo un error al cargar las categorías.');
+      showAlert('error', 'Error', 'Hubo un error al cargar las categorías', '');
     }
     }   
     // Cargar las categorías cuando se carga la página

@@ -1,3 +1,5 @@
+import { showAlert } from '../../../Config/config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const loanList = document.getElementById('loan-list'); // Donde se mostrarán los libros
 
@@ -29,8 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al cargar los prestamos.');
+            showAlert('error', 'Error', 'Hubo un error al cargar los préstamos', '');
+            
         }
+    }
+
+     // Función para formatear fechas
+     function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(dateString);
+        return date.toLocaleDateString('es-ES', options);
     }
 
     // Función para crear una tarjeta de libro
@@ -40,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         card.setAttribute('data-status', loan.status);
         card.setAttribute('data-id', loan.prestamoId);
 
+    const fechaPrestamoFormatted = formatDate(loan.fechaPrestamo);
+    const fechaVencimientoFormatted = formatDate(loan.fechaVencimiento);
+    const DevolucionFormatted = loan.fechaDevolucion ? formatDate(loan.fechaDevolucion) : "Pendiente";
+        
         // Crear el HTML de la tarjeta, ahora iterando sobre las categorías
         card.innerHTML = `
             <div class="card-header">
@@ -51,11 +65,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="status-indicator"></span>
                 </div>
             </div>
-                <div class="card-description" id="loan-book-title">"${loan.libro.title}"</div>
-                <div class="card-description" id="loan-fechaPrestamo">${loan.fechaPrestamo}</div>
-                <div class="card-description" id="loan-fechaVencimiento">${loan.fechaVencimiento}</div>
-                <div class="card-description" id="loan-fechaDevolucion">${loan.fechaDevolucion!=null?loan.fechaDevolucion:"Pendiente"}</div>
+            <div class="card-body">
+                <div class="card-description" id="loan-book-title">
+                <span class="card-data"><strong>Libro:</strong></span><br>
+                "${loan.libro.title}"
             </div>
+            <div class="card-description" id="loan-fechaPrestamo">
+                <span class="card-data"><strong>Fecha de Préstamo:</strong></span><br>
+                ${fechaPrestamoFormatted}
+            </div>
+            <div class="card-description" id="loan-fechaVencimiento">
+                <span class="card-data"><strong>Fecha de Vencimiento:</strong></span><br>
+                ${fechaVencimientoFormatted}
+            </div>
+            <div class="card-description" id="loan-fechaDevolucion">
+                <span class="card-data"><strong>Devolución:</strong></span><br>
+                ${DevolucionFormatted}
+            </div>
+        </div>
         `;
 
         // Agregar la tarjeta a la lista de libros

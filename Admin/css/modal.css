@@ -125,13 +125,27 @@
 }
 
 .input-icon input,
-.form-group textarea,
-.form-group select {
+.form-group textarea{
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.form-group textarea{
+    resize: none;
+}
+
+.form-group select {
+    width: 100%; /* Mantén el ancho ajustable */
+    padding: 4px; /* Reduce el espacio interno */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.875rem; /* Reduce el tamaño del texto */
+    height: auto; /* Asegura que la altura se ajuste automáticamente */
+    line-height: 1.2; /* Ajusta la separación entre líneas */
 }
 
 input[type="text"],
