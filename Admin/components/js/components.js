@@ -21,3 +21,4 @@ document.addEventListener("DOMContentLoaded", () => {
         { url: '../components/html/footer.html', target: 'footer' }
     ]);
 });
+

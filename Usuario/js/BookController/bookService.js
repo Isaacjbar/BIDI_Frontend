@@ -1,3 +1,5 @@
+import { showAlert } from '../../../Config/config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
         // Selección de elementos
         const librosList = document.getElementById('libros-list'); // Donde se mostrarán los libros
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             } catch (error) {
                 console.error('Error:', error.message);
-                alert('Hubo un error al cargar los libros.');
+                showAlert('error', 'Error', 'Hubo un error al cargar los libros', '');
             }
         }
 
@@ -107,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 form.reset();
         
                 // Notificar al usuario
-                alert('Préstamo registrado correctamente');
-            } catch (error) {
+                showAlert('success', 'Éxito', result.text, '');            } catch (error) {
                 console.error('Error:', error.message);
-                alert('Hubo un error al registrar el préstamo.');
+                showAlert('error', 'Error', 'Hubo un error al registrar el préstamo', '');
+
             }
         }
 

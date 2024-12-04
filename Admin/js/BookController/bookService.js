@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al cargar los libros.');
+            showAlert('error', 'Error', 'Hubo un error al cargar los libros', '');
         }
     }
 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             console.error('Error:', error.message);
-            alert('Hubo un error al cargar los libros.');
+            showAlert('error', 'Error', 'Hubo un error al cargar los libros', '');
         }
     }
 

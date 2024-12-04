@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar">
         <div class="logo-container" title="Ir al inicio">
-            <div class="logo">
+           <div class="logo"> <a href="/Admin/vistas/dashboard.html">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
                     <g fill="none" stroke="#fff" stroke-width="2">
                         <rect x="4" y="4" width="28" height="56" rx="10" ry="10" fill="#fff" />
@@ -15,6 +15,7 @@
                 </svg>
             </div>
             <span class="logo-text">BIDI</span>
+        </a>
         </div>
 
         <div class="nav-container">
@@ -25,7 +26,7 @@
                 <li><a href="/Admin/vistas/loans.html">Préstamos</a></li>
             </ul>
 
-            <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="menu-toggle">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -33,7 +34,7 @@
 
             <div class="side-menu" id="sideMenu">
                 <div class="side-menu-background"></div>
-                <button class="close-btn" onclick="toggleMenu()">x</button>
+                <button class="close-btn">x</button>
                 <ul class="side-menu-links">
                     <li><a href="/Admin/vistas/user.html">Usuarios</a></li>
                     <li><a href="/Admin/vistas/category.html">Categorías</a></li>
@@ -43,11 +44,12 @@
             </div>
 
             <!-- Ícono de perfil -->
-            <div class="profile-icon">
+            <div class="profile-icon"><a href="/Admin/vistas/perfil.html">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="white" stroke-width="4">
                     <circle cx="32" cy="22" r="10"/>
                     <path d="M16 44c0-8 6-12 16-12s16 4 16 12v6H16z"/>
                 </svg>
+            </a>
             </div>
         </div>
     </nav>
