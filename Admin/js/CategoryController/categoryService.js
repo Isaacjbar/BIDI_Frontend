@@ -1,6 +1,7 @@
 import { showAlert } from '../../../Config/config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+<<<<<<< HEAD
   // Selección de elementos
   const formularioCategoria = document.getElementById('registerForm');
   const categoriasList = document.getElementById('categorias-list'); // Donde se mostrarán las categorías
@@ -46,6 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!response.ok) {
         throw new Error('Error al registrar la categoría');
+=======
+    // Selección de elementos
+    const formularioCategoria = document.getElementById('registerForm');
+    const categoriasList = document.getElementById('categorias-list'); // Donde se mostrarán las categorías
+    const statusSwitch = document.getElementById('statusSwitch'); // Control de estado (activo/inactivo)  
+  
+    // // Función para manejar el estado del switch
+    // statusSwitch.addEventListener('change', () => {
+    //   if (statusSwitch.checked) {
+    //     statusText.textContent = "ACTIVE";
+    //   } else {
+    //     statusText.textContent = "INACTIVE";
+    //   }
+    // });
+  
+    // Enviar datos al endpoint "category/save" (crear categoría)
+    formularioCategoria.querySelector('.btn-submit').addEventListener('click', async (event) => {
+      event.preventDefault(); // Prevenir recarga de la página
+  
+      const categoryName = document.getElementById('categoryName').value.trim();
+  
+      // Validación básica
+      if (!categoryName || categoryName.length < 3) {
+        showAlert('error', 'Error', 'El nombre debe tener al menos 3 caracteres', '');
+        return;
+>>>>>>> ef2578505a5f3bd9c3cf24f7d236456a6bd54bcf
       }
 
       const result = await response.json();
@@ -101,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+<<<<<<< HEAD
   // Función para manejar el envío de los datos de edición
   document.getElementById('editForm').addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
@@ -136,6 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!response.ok) {
         throw new Error('Error al actualizar la categoría');
+=======
+      if (!categoryName || categoryName.length < 3) {
+          showAlert('error', 'Error', 'El nombre debe tener al menos 3 caracteres.', '');
+          return;
+>>>>>>> ef2578505a5f3bd9c3cf24f7d236456a6bd54bcf
       }
 
       const result = await response.json();
@@ -308,6 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
           openEditModal(card);
         });
 
+<<<<<<< HEAD
         // Añadir la tarjeta al contenedor
         categoriasList.appendChild(card);
       });
@@ -315,6 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error('Error:', error.message);
       alert('Hubo un error al cargar las categorías.');
+=======
+      } catch (error) {
+          console.error('Error:', error.message);
+          showAlert('error', 'Error', 'Hubo un error al cargar las categorías', '');
+      }
+>>>>>>> ef2578505a5f3bd9c3cf24f7d236456a6bd54bcf
     }
   }
 
@@ -390,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //   }
     } catch (error) {
       console.error('Error:', error.message);
-      alert('Hubo un error al cargar las categorías.');
+      showAlert('error', 'Error', 'Hubo un error al cargar las categorías', '');
     }
   }
   // Cargar las categorías cuando se carga la página
