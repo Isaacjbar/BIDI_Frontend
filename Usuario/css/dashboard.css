@@ -6,17 +6,17 @@
     --footer-bg-color: #00264d;
 }
 main{
- margin-left: 5em !important; 
+ margin-left: 3em !important; 
 }
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-content: center;
     position: relative;
     padding-top: 2%;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     z-index: 3; /* Cards por encima de las olas */
     text-align: center;
     
@@ -25,7 +25,7 @@ main{
 .card {
     background: #e0e0e0;
     border-radius: 50px;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +33,7 @@ main{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: -1px -1px 1px rgba(255, 255, 255, 0.5);
     transition: transform 0.3s;
-    width: 280px; 
+    width: 240px; 
     height: 260px;
     cursor: pointer;
 }

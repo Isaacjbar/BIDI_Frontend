@@ -162,7 +162,7 @@
 }
 
 .side-menu.active {
-    z-index: 1000;
+    z-index: 2000 !important;
     display: block;
     transform: translateX(0);
 }

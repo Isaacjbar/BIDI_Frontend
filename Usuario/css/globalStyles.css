@@ -177,4 +177,19 @@ input:checked + .slider:before {
     fill: #ffffff;
 }
 
+#header {
+    position: relative; /* O absolute/fixed según lo que necesites */
+    z-index: 3;
+}
 
+#footer {
+    position: relative; /* O absolute/fixed según lo que necesites */
+    z-index: 1;
+}
+
+#header::before,
+#header::after,
+#footer::before,
+#footer::after {
+    z-index: 0; /* Inferior al modal */
+}

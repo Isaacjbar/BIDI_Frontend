@@ -51,10 +51,11 @@ async function closeModal(modalId) {
 async function openEditModal(card) {
     const bookId = card.getAttribute('data-id'); // Obtiene el id del libro
     const bookTitle = card.querySelector('.card-title').textContent; // Obtiene el título del libro
-    const bookAuthor = card.querySelector('.card-author').textContent; // Obtiene el autor del libro
+    const bookAuthor = card.querySelector('.author').textContent; // Obtiene el autor del libro
+    console.log(bookAuthor);
     const bookDescription = card.querySelector('.description').textContent; // Obtiene la descripción del libro
+    console.log(bookDescription);
     const bookCopias = card.querySelector('.copias').textContent; // Obtiene las copias
-    console.log(bookCopias);
     // Obtener las categorías como un array de IDs (categoryId)
     const bookCategories = Array.from(card.querySelector('.card-categories').children)
         .map(cat => cat.getAttribute('data-id')); // Usamos el data-id de cada categoría

@@ -11,11 +11,12 @@
     justify-content: center; /* Centrado horizontal */
     align-items: center; 
     transition: opacity 0.3s ease; /* Transición de opacidad */
+    margin-top: 60px;
 }
 
 .modal.show {
     display: flex; /* Se muestra solo cuando tiene la clase "show" */
-    z-index: 10; /* Trae el modal al frente */
+    z-index: 4; /* Trae el modal al frente */
     opacity: 1;
 }
 

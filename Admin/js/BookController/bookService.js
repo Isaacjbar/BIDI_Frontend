@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-body">
             <div class="card-author">
             <span class="card-data"><strong>Autor:</strong></span><br>
-            <span>${book.author || "No disponible"} </span>
+            <span class="author">${book.author || "No disponible"} </span>
             </div>
             <div class="card-description">
             <span class="card-data"><strong>Descripción:</strong></span><br>

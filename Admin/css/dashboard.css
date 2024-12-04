@@ -16,7 +16,7 @@ main{
     position: relative;
     padding-top: 2%;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 20px;
     z-index: 3; /* Cards por encima de las olas */
     text-align: center;
     
