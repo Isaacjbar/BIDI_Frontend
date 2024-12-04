@@ -1,3 +1,5 @@
+import { showAlert } from '../../../Config/config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     async function loadUser() {
         const userId = parseInt(localStorage.getItem('userId'));
@@ -125,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Mostrar mensaje de éxito
-            alert('Datos actualizados exitosamente.');
+            showAlert('success', 'Éxito', 'Datos actualizados exitosamente.', '');
 
             // Opcional: Limpiar los campos de contraseña
             document.getElementById('newPassword').value = '';
