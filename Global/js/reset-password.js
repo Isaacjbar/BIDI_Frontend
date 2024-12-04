@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     emailVerify();
 
     const email = localStorage.getItem("email");
+    console.log(email);
     const resetButton = document.getElementById("resetButton");
 
     resetButton.addEventListener("click", async function (event) {
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ),
                 credentials: 'include'
             });
-
+            console.log(response);
             if (!response.ok) {
                 const errorResponse = await response.json();
 

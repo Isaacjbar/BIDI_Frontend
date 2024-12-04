@@ -83,7 +83,7 @@ p {
 
 .input-box input:focus ~ label,
 .input-box input:valid ~ label {
-    top: -5px; /* Mueve el label hacia arriba */
+    top: -15px; /* Mueve el label hacia arriba */
     left: 30px; /* Ajusta el posicionamiento horizontal */
     font-size: 12px; /* Reduce el tamaño de la fuente */
     color: #333; /* Cambia el color del label */
